@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		380E99371F9EEF1A0059E0C4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380E99361F9EEF1A0059E0C4 /* AppDelegate.swift */; };
-		380E99391F9EEF1A0059E0C4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 380E99381F9EEF1A0059E0C4 /* ViewController.swift */; };
 		380E993C1F9EEF1A0059E0C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380E993A1F9EEF1A0059E0C4 /* Main.storyboard */; };
-		380E993F1F9EEF1A0059E0C4 /* Noteworthy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 380E993D1F9EEF1A0059E0C4 /* Noteworthy.xcdatamodeld */; };
 		380E99411F9EEF1A0059E0C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380E99401F9EEF1A0059E0C4 /* Assets.xcassets */; };
 		380E99441F9EEF1A0059E0C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380E99421F9EEF1A0059E0C4 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -18,12 +16,11 @@
 /* Begin PBXFileReference section */
 		380E99331F9EEF1A0059E0C4 /* Noteworthy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Noteworthy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		380E99361F9EEF1A0059E0C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		380E99381F9EEF1A0059E0C4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		380E993B1F9EEF1A0059E0C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		380E993E1F9EEF1A0059E0C4 /* Noteworthy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Noteworthy.xcdatamodel; sourceTree = "<group>"; };
 		380E99401F9EEF1A0059E0C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		380E99431F9EEF1A0059E0C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		380E99451F9EEF1A0059E0C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		388A1BA81FCE13BD0005719E /* Noteworthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Noteworthy.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +53,54 @@
 		380E99351F9EEF1A0059E0C4 /* Noteworthy */ = {
 			isa = PBXGroup;
 			children = (
-				380E99361F9EEF1A0059E0C4 /* AppDelegate.swift */,
-				380E99381F9EEF1A0059E0C4 /* ViewController.swift */,
-				380E993A1F9EEF1A0059E0C4 /* Main.storyboard */,
-				380E99401F9EEF1A0059E0C4 /* Assets.xcassets */,
-				380E99421F9EEF1A0059E0C4 /* LaunchScreen.storyboard */,
+				388A1BAA1FCE13EA0005719E /* Models */,
+				388A1BAB1FCE13F20005719E /* Model Controllers */,
+				388A1BAC1FCE13FB0005719E /* ViewControllers */,
+				388A1BA91FCE13DA0005719E /* Storyboards */,
+				388A1BAD1FCE14050005719E /* Resources */,
 				380E99451F9EEF1A0059E0C4 /* Info.plist */,
-				380E993D1F9EEF1A0059E0C4 /* Noteworthy.xcdatamodeld */,
+				388A1BA81FCE13BD0005719E /* Noteworthy.entitlements */,
 			);
 			path = Noteworthy;
+			sourceTree = "<group>";
+		};
+		388A1BA91FCE13DA0005719E /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				380E99421F9EEF1A0059E0C4 /* LaunchScreen.storyboard */,
+				380E993A1F9EEF1A0059E0C4 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		388A1BAA1FCE13EA0005719E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		388A1BAB1FCE13F20005719E /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		388A1BAC1FCE13FB0005719E /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		388A1BAD1FCE14050005719E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				380E99401F9EEF1A0059E0C4 /* Assets.xcassets */,
+				380E99361F9EEF1A0059E0C4 /* AppDelegate.swift */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,6 +136,11 @@
 					380E99321F9EEF1A0059E0C4 = {
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.iCloud = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -139,8 +180,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				380E99391F9EEF1A0059E0C4 /* ViewController.swift in Sources */,
-				380E993F1F9EEF1A0059E0C4 /* Noteworthy.xcdatamodeld in Sources */,
 				380E99371F9EEF1A0059E0C4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,7 +317,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Noteworthy/Noteworthy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5A3323C976;
 				INFOPLIST_FILE = Noteworthy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JohnHicks.Noteworthy;
@@ -292,7 +333,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Noteworthy/Noteworthy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5A3323C976;
 				INFOPLIST_FILE = Noteworthy/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.JohnHicks.Noteworthy;
@@ -324,19 +367,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		380E993D1F9EEF1A0059E0C4 /* Noteworthy.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				380E993E1F9EEF1A0059E0C4 /* Noteworthy.xcdatamodel */,
-			);
-			currentVersion = 380E993E1F9EEF1A0059E0C4 /* Noteworthy.xcdatamodel */;
-			path = Noteworthy.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 380E992B1F9EEF1A0059E0C4 /* Project object */;
 }
