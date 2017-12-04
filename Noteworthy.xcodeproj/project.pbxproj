@@ -14,8 +14,9 @@
 		3850AA101FD5B95E0057D125 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */; };
 		3850AA131FD5BE6B0057D125 /* Noteworthy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA111FD5BE6B0057D125 /* Noteworthy.xcdatamodeld */; };
 		3850AA151FD5C0DA0057D125 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA141FD5C0DA0057D125 /* CoreDataStack.swift */; };
-		3850AA171FD5C1840057D125 /* Entry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA161FD5C1840057D125 /* Entry+Convenience.swift */; };
-		389E01951FD0C68900F18ECE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01941FD0C68900F18ECE /* Entry.swift */; };
+		3850AA1A1FD5C3F90057D125 /* Entry+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA181FD5C3F90057D125 /* Entry+CoreDataClass.swift */; };
+		3850AA1B1FD5C3F90057D125 /* Entry+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA191FD5C3F90057D125 /* Entry+CoreDataProperties.swift */; };
+		3850AA1D1FD5CCC70057D125 /* EntryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA1C1FD5CCC70057D125 /* EntryController.swift */; };
 		389E01971FD0C69B00F18ECE /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01961FD0C69B00F18ECE /* Challenge.swift */; };
 		389E019A1FD0C72E00F18ECE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01991FD0C72E00F18ECE /* CloudKitManager.swift */; };
 /* End PBXBuildFile section */
@@ -30,9 +31,10 @@
 		3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
 		3850AA121FD5BE6B0057D125 /* Noteworthy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Noteworthy.xcdatamodel; sourceTree = "<group>"; };
 		3850AA141FD5C0DA0057D125 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		3850AA161FD5C1840057D125 /* Entry+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+Convenience.swift"; sourceTree = "<group>"; };
+		3850AA181FD5C3F90057D125 /* Entry+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataClass.swift"; sourceTree = "<group>"; };
+		3850AA191FD5C3F90057D125 /* Entry+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		3850AA1C1FD5CCC70057D125 /* EntryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryController.swift; sourceTree = "<group>"; };
 		388A1BA81FCE13BD0005719E /* Noteworthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Noteworthy.entitlements; sourceTree = "<group>"; };
-		389E01941FD0C68900F18ECE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		389E01961FD0C69B00F18ECE /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		389E01991FD0C72E00F18ECE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,11 +102,11 @@
 		388A1BAA1FCE13EA0005719E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				389E01941FD0C68900F18ECE /* Entry.swift */,
 				3850AA111FD5BE6B0057D125 /* Noteworthy.xcdatamodeld */,
-				389E01961FD0C69B00F18ECE /* Challenge.swift */,
+				3850AA181FD5C3F90057D125 /* Entry+CoreDataClass.swift */,
+				3850AA191FD5C3F90057D125 /* Entry+CoreDataProperties.swift */,
 				3850AA141FD5C0DA0057D125 /* CoreDataStack.swift */,
-				3850AA161FD5C1840057D125 /* Entry+Convenience.swift */,
+				389E01961FD0C69B00F18ECE /* Challenge.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -112,6 +114,7 @@
 		388A1BAB1FCE13F20005719E /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				3850AA1C1FD5CCC70057D125 /* EntryController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -218,10 +221,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3850AA151FD5C0DA0057D125 /* CoreDataStack.swift in Sources */,
-				389E01951FD0C68900F18ECE /* Entry.swift in Sources */,
 				3850AA101FD5B95E0057D125 /* CloudKitSyncable.swift in Sources */,
 				389E01971FD0C69B00F18ECE /* Challenge.swift in Sources */,
-				3850AA171FD5C1840057D125 /* Entry+Convenience.swift in Sources */,
+				3850AA1D1FD5CCC70057D125 /* EntryController.swift in Sources */,
+				3850AA1B1FD5C3F90057D125 /* Entry+CoreDataProperties.swift in Sources */,
+				3850AA1A1FD5C3F90057D125 /* Entry+CoreDataClass.swift in Sources */,
 				389E019A1FD0C72E00F18ECE /* CloudKitManager.swift in Sources */,
 				3850AA131FD5BE6B0057D125 /* Noteworthy.xcdatamodeld in Sources */,
 				380E99371F9EEF1A0059E0C4 /* AppDelegate.swift in Sources */,
