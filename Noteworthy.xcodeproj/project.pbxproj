@@ -11,6 +11,10 @@
 		380E993C1F9EEF1A0059E0C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380E993A1F9EEF1A0059E0C4 /* Main.storyboard */; };
 		380E99411F9EEF1A0059E0C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380E99401F9EEF1A0059E0C4 /* Assets.xcassets */; };
 		380E99441F9EEF1A0059E0C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380E99421F9EEF1A0059E0C4 /* LaunchScreen.storyboard */; };
+		3850AA101FD5B95E0057D125 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */; };
+		3850AA131FD5BE6B0057D125 /* Noteworthy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA111FD5BE6B0057D125 /* Noteworthy.xcdatamodeld */; };
+		3850AA151FD5C0DA0057D125 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA141FD5C0DA0057D125 /* CoreDataStack.swift */; };
+		3850AA171FD5C1840057D125 /* Entry+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA161FD5C1840057D125 /* Entry+Convenience.swift */; };
 		389E01951FD0C68900F18ECE /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01941FD0C68900F18ECE /* Entry.swift */; };
 		389E01971FD0C69B00F18ECE /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01961FD0C69B00F18ECE /* Challenge.swift */; };
 		389E019A1FD0C72E00F18ECE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01991FD0C72E00F18ECE /* CloudKitManager.swift */; };
@@ -23,6 +27,10 @@
 		380E99401F9EEF1A0059E0C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		380E99431F9EEF1A0059E0C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		380E99451F9EEF1A0059E0C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
+		3850AA121FD5BE6B0057D125 /* Noteworthy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Noteworthy.xcdatamodel; sourceTree = "<group>"; };
+		3850AA141FD5C0DA0057D125 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		3850AA161FD5C1840057D125 /* Entry+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Entry+Convenience.swift"; sourceTree = "<group>"; };
 		388A1BA81FCE13BD0005719E /* Noteworthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Noteworthy.entitlements; sourceTree = "<group>"; };
 		389E01941FD0C68900F18ECE /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		389E01961FD0C69B00F18ECE /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
@@ -64,11 +72,20 @@
 				388A1BAC1FCE13FB0005719E /* ViewControllers */,
 				388A1BA91FCE13DA0005719E /* Storyboards */,
 				389E01981FD0C70500F18ECE /* Other Controllers */,
+				3850AA0E1FD5B93E0057D125 /* Protocols */,
 				388A1BAD1FCE14050005719E /* Resources */,
 				380E99451F9EEF1A0059E0C4 /* Info.plist */,
 				388A1BA81FCE13BD0005719E /* Noteworthy.entitlements */,
 			);
 			path = Noteworthy;
+			sourceTree = "<group>";
+		};
+		3850AA0E1FD5B93E0057D125 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		388A1BA91FCE13DA0005719E /* Storyboards */ = {
@@ -84,7 +101,10 @@
 			isa = PBXGroup;
 			children = (
 				389E01941FD0C68900F18ECE /* Entry.swift */,
+				3850AA111FD5BE6B0057D125 /* Noteworthy.xcdatamodeld */,
 				389E01961FD0C69B00F18ECE /* Challenge.swift */,
+				3850AA141FD5C0DA0057D125 /* CoreDataStack.swift */,
+				3850AA161FD5C1840057D125 /* Entry+Convenience.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,9 +217,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3850AA151FD5C0DA0057D125 /* CoreDataStack.swift in Sources */,
 				389E01951FD0C68900F18ECE /* Entry.swift in Sources */,
+				3850AA101FD5B95E0057D125 /* CloudKitSyncable.swift in Sources */,
 				389E01971FD0C69B00F18ECE /* Challenge.swift in Sources */,
+				3850AA171FD5C1840057D125 /* Entry+Convenience.swift in Sources */,
 				389E019A1FD0C72E00F18ECE /* CloudKitManager.swift in Sources */,
+				3850AA131FD5BE6B0057D125 /* Noteworthy.xcdatamodeld in Sources */,
 				380E99371F9EEF1A0059E0C4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -387,6 +411,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3850AA111FD5BE6B0057D125 /* Noteworthy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3850AA121FD5BE6B0057D125 /* Noteworthy.xcdatamodel */,
+			);
+			currentVersion = 3850AA121FD5BE6B0057D125 /* Noteworthy.xcdatamodel */;
+			path = Noteworthy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 380E992B1F9EEF1A0059E0C4 /* Project object */;
 }
