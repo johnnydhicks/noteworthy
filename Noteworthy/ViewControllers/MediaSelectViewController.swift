@@ -54,7 +54,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         avPlayer?.actionAtItemEnd = .none
         
         if UIScreen.main.bounds.width == 375 {
-            let widthRequired = videoView.frame.size.width - 20
+            let widthRequired = videoView.frame.size.width
             avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
         }else if UIScreen.main.bounds.width == 320 {
             avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: (videoView.frame.size.height - 120) * 1.78, height: videoView.frame.size.height - 120)

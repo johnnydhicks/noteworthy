@@ -114,44 +114,47 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gam-Yd-HnN">
-                                            <rect key="frame" x="16" y="11" width="343" height="20"/>
+                                            <rect key="frame" x="8" y="11" width="359" height="20"/>
                                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                             <color key="textColor" red="0.15683796999999999" green="0.40455868839999998" blue="0.76085025070000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIU-fq-NpJ">
-                                            <rect key="frame" x="0.0" y="326.33333333333331" width="375" height="14.333333333333314"/>
+                                            <rect key="frame" x="8.3333333333333428" y="318.33333333333331" width="359" height="14.333333333333314"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Oe-WL-KCW">
-                                            <rect key="frame" x="8" y="39" width="359" height="279.33333333333331"/>
+                                            <rect key="frame" x="8" y="39" width="359" height="271.33333333333331"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IUJ-E7-tHQ">
-                                            <rect key="frame" x="8" y="39" width="359" height="279.33333333333331"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IUJ-E7-tHQ">
+                                            <rect key="frame" x="8" y="39" width="359" height="271.33333333333331"/>
                                         </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="6Oe-WL-KCW" firstAttribute="top" secondItem="gam-Yd-HnN" secondAttribute="bottom" constant="8" id="0sk-z8-eqD"/>
                                         <constraint firstItem="IUJ-E7-tHQ" firstAttribute="leading" secondItem="6Oe-WL-KCW" secondAttribute="leading" id="90V-iZ-6me"/>
                                         <constraint firstItem="lIU-fq-NpJ" firstAttribute="centerX" secondItem="plS-Xx-Ydn" secondAttribute="centerX" id="E9c-KK-oPm"/>
-                                        <constraint firstItem="lIU-fq-NpJ" firstAttribute="width" secondItem="plS-Xx-Ydn" secondAttribute="width" id="J43-4f-TdG"/>
                                         <constraint firstItem="IUJ-E7-tHQ" firstAttribute="bottom" secondItem="6Oe-WL-KCW" secondAttribute="bottom" id="KCl-L7-tmM"/>
                                         <constraint firstAttribute="trailing" secondItem="6Oe-WL-KCW" secondAttribute="trailing" constant="8" id="L1m-Oz-f41"/>
+                                        <constraint firstItem="lIU-fq-NpJ" firstAttribute="width" secondItem="IUJ-E7-tHQ" secondAttribute="width" id="Nyn-BI-cv2"/>
                                         <constraint firstItem="gam-Yd-HnN" firstAttribute="top" secondItem="plS-Xx-Ydn" secondAttribute="topMargin" id="OjF-J0-0Yr"/>
+                                        <constraint firstItem="gam-Yd-HnN" firstAttribute="centerX" secondItem="plS-Xx-Ydn" secondAttribute="centerX" id="Uil-d1-IiM"/>
                                         <constraint firstItem="IUJ-E7-tHQ" firstAttribute="trailing" secondItem="6Oe-WL-KCW" secondAttribute="trailing" id="XAE-7G-f1V"/>
-                                        <constraint firstItem="gam-Yd-HnN" firstAttribute="leading" secondItem="plS-Xx-Ydn" secondAttribute="leadingMargin" id="XnF-xd-k9s"/>
                                         <constraint firstItem="IUJ-E7-tHQ" firstAttribute="top" secondItem="6Oe-WL-KCW" secondAttribute="top" id="aRo-hn-qKo"/>
+                                        <constraint firstItem="gam-Yd-HnN" firstAttribute="width" secondItem="IUJ-E7-tHQ" secondAttribute="width" id="gSI-1m-J6M"/>
                                         <constraint firstItem="lIU-fq-NpJ" firstAttribute="top" secondItem="6Oe-WL-KCW" secondAttribute="bottom" constant="8" id="mlW-if-2Hw"/>
                                         <constraint firstItem="6Oe-WL-KCW" firstAttribute="leading" secondItem="plS-Xx-Ydn" secondAttribute="leading" constant="8" id="rbF-Td-vyc"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="gam-Yd-HnN" secondAttribute="trailing" id="wMN-2T-V6Q"/>
                                         <constraint firstItem="6Oe-WL-KCW" firstAttribute="centerX" secondItem="plS-Xx-Ydn" secondAttribute="centerX" id="wgE-wa-hvM"/>
-                                        <constraint firstAttribute="bottom" secondItem="lIU-fq-NpJ" secondAttribute="bottom" id="wxj-N0-15c"/>
+                                        <constraint firstAttribute="bottom" secondItem="lIU-fq-NpJ" secondAttribute="bottom" constant="8" id="wxj-N0-15c"/>
+                                        <constraint firstItem="lIU-fq-NpJ" firstAttribute="top" secondItem="IUJ-E7-tHQ" secondAttribute="bottom" constant="8" id="yrT-Xw-jrY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="dateLabel" destination="gam-Yd-HnN" id="M6K-FV-9PJ"/>
+                                    <outlet property="noteLabel" destination="lIU-fq-NpJ" id="4uq-Pt-Iec"/>
                                     <outlet property="photoImageView" destination="IUJ-E7-tHQ" id="dMS-XJ-0WY"/>
                                     <outlet property="videoPlayerSuperView" destination="6Oe-WL-KCW" id="gsq-vM-72d"/>
                                     <segue destination="pcZ-R4-7qX" kind="show" identifier="toEditEntry" id="hhR-Jh-LDY"/>
@@ -184,17 +187,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-ks-bw9">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert Note" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-ks-bw9">
                                 <rect key="frame" x="23" y="404" width="328" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFp-IB-4xP">
+                            <containerView opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFp-IB-4xP">
                                 <rect key="frame" x="0.0" y="88" width="375" height="271"/>
                                 <connections>
-                                    <segue destination="iZ0-sM-aKh" kind="embed" id="Oeg-oy-v9F"/>
+                                    <segue destination="iZ0-sM-aKh" kind="embed" identifier="toContainerView" id="Oeg-oy-v9F"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -208,8 +211,15 @@
                         <viewLayoutGuide key="safeArea" id="YYt-7B-vgp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add/Edit Entry" id="s8G-ap-fBp">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="AbO-Tv-RhK"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="AbO-Tv-RhK">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="pcZ-R4-7qX" id="Y2X-J1-ObP"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="noteTextField" destination="gVU-ks-bw9" id="Wv1-yv-dc8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5p-rR-6Xv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -282,13 +292,15 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8J2-48-m1E">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8J2-48-m1E">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0M-qN-DBq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
-                                <state key="normal" title="Tap to Select Media Type"/>
+                                <state key="normal" title="Tap to Select Media Type">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="selectMediaButtonTapped:" destination="iZ0-sM-aKh" eventType="touchUpInside" id="4HY-cc-Z4Z"/>
                                 </connections>
@@ -315,6 +327,7 @@
                             <constraint firstItem="8J2-48-m1E" firstAttribute="leading" secondItem="qqJ-6M-hwX" secondAttribute="leading" id="y0W-VD-kwO"/>
                             <constraint firstItem="HQ1-2J-UUl" firstAttribute="top" secondItem="qqJ-6M-hwX" secondAttribute="top" id="z23-AY-3R6"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="h0e-Mo-8DB"/>
                     </view>
                     <connections>
                         <outlet property="imageView" destination="8J2-48-m1E" id="1ST-5Z-0Ts"/>

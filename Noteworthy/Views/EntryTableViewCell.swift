@@ -11,8 +11,16 @@ import AVFoundation
 
 class EntryTableViewCell: UITableViewCell {
     
+    var entry: Entry? {
+        didSet {
+            self.updateCell()
+        }
+    }
+    
     @IBOutlet weak var videoPlayerSuperView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var noteLabel: UILabel!
     
     var avPlayer: AVPlayer?
     var avPlayerLayer: AVPlayerLayer?
@@ -22,6 +30,7 @@ class EntryTableViewCell: UITableViewCell {
     var videoPlayerItem: AVPlayerItem? = nil {
         didSet {
             avPlayer?.replaceCurrentItem(with: self.videoPlayerItem)
+            avPlayer?.play()
         }
     }
     
@@ -70,13 +79,36 @@ class EntryTableViewCell: UITableViewCell {
         p.seek(to: kCMTimeZero)
     }
     
-    
-    
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
     }
+    
+    func updateCell() {
+        guard let entry = entry else { return }
+        
+        
+        
+        dateLabel.text = dateFormatter.string(from: entry.timestamp as Date)
+        noteLabel.text = entry.note
+        
+        
+        if let imageData = entry.imageData {
+        photoImageView.image = UIImage(data: imageData as Data)
+            
+        } else if let videoURLString = entry.videoURL,
+            let videoURL = URL(string: videoURLString) {
+            videoPlayerItem = AVPlayerItem(url: videoURL)
+        }
+    }
+    
+    private var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
 
 }

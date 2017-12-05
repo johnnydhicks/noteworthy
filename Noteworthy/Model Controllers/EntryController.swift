@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import CloudKit
 
 class EntryController {
     
@@ -25,15 +26,49 @@ class EntryController {
     
     
     // CRUD Functions
-    func createEntry(mediaData: Data, note: String, recordID: String, timestamp: Date) {
+    func createEntry(imageData: Data?, oldVideoURL: URL?, note: String) {
         
-        Entry(mediaData: mediaData, note: note, recordID: recordID, timestamp: timestamp)
+        if let oldVideoURL = oldVideoURL {
+            
+            guard let videoData = try? Data(contentsOf: oldVideoURL) else { return }
+            
+            do {
+                
+                let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                let newVideoURL = directoryURL.appendingPathComponent(oldVideoURL.lastPathComponent)
+                try videoData.write(to: newVideoURL)
+                
+                _ = Entry(imageData: imageData, videoURL: newVideoURL, note: note)
+                saveToPersistentStore()
+
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+            
+        } else {
+            _ = Entry(imageData: imageData, videoURL: nil, note: note)
+            saveToPersistentStore()
+
+        }
+        
+        
+    }
+    
+    func update(entry: Entry, imageData: Data?, OldVideoURL: URL?, note: String) {
+        
+//        entry.note = note
+//        entry.imageData = imageData as NSData
+//        entry.videoURL = OldVideoURL
+        saveToPersistentStore()
     }
     
     func delete(entry: Entry) {
         guard let moc = entry.managedObjectContext else { return }
         
         moc.delete(entry)
+        
+        saveToPersistentStore()
     }
     
     
