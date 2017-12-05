@@ -50,7 +50,7 @@ public class Entry: NSManagedObject, CloudKitSyncable {
         self.init(context: context)
         
         self.imageData = imageData as NSData?
-        self.videoURL = videoURL?.absoluteString
+        self.videoURL = videoURL
         self.note = note
         self.timestamp = timestamp as NSDate
     }

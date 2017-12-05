@@ -97,9 +97,12 @@ class EntryTableViewCell: UITableViewCell {
         if let imageData = entry.imageData {
         photoImageView.image = UIImage(data: imageData as Data)
             
-        } else if let videoURLString = entry.videoURL,
-            let videoURL = URL(string: videoURLString) {
-            videoPlayerItem = AVPlayerItem(url: videoURL)
+        } else if let videoURLString = entry.videoURL {
+            let videoURL = URL(fileURLWithPath: videoURLString)
+            
+            let asset = AVURLAsset(url: videoURL)
+
+            videoPlayerItem = item
         }
     }
     

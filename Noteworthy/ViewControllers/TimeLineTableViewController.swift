@@ -24,12 +24,26 @@ class TimeLineTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 350.0
         
+        getURLsForDocumentsDirectory()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         tableView.reloadData()
+    }
+    
+    func getURLsForDocumentsDirectory() {
+        
+        do {
+        let documentsDir = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        
+        let contents = try FileManager.default.contentsOfDirectory(at: documentsDir, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
+            print(contents)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
 
