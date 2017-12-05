@@ -43,19 +43,22 @@ class EntryTableViewCell: UITableViewCell {
     
         self.avPlayer = AVPlayer.init(playerItem: self.videoPlayerItem)
         avPlayerLayer = AVPlayerLayer(player: avPlayer)
-        avPlayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspect
+        avPlayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         avPlayer?.volume = 3
         avPlayer?.actionAtItemEnd = .none
         
-        if UIScreen.main.bounds.width == 375 {
-            let widthRequired = self.frame.size.width - 20
-            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
-        }else if UIScreen.main.bounds.width == 320 {
-            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: (self.frame.size.height - 120) * 1.78, height: self.frame.size.height - 120)
-        }else{
-            let widthRequired = self.frame.size.width
-            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
-        }
+//        if UIScreen.main.bounds.width == 375 {
+//            let widthRequired = self.frame.size.width - 20
+//            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
+//        }else if UIScreen.main.bounds.width == 320 {
+//            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: (self.frame.size.height - 120) * 1.78, height: self.frame.size.height - 120)
+//        }else{
+//            let widthRequired = self.frame.size.width
+//            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
+//        }
+        avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: photoImageView.frame.width, height: photoImageView.frame.height)
+        
+        avPlayerLayer?.backgroundColor = UIColor.lightGray.cgColor
         self.backgroundColor = .clear
         self.videoPlayerSuperView.layer.insertSublayer(avPlayerLayer!, at: 0)
         
@@ -70,6 +73,7 @@ class EntryTableViewCell: UITableViewCell {
     }
     
     func startPlayback() {
+        
         self.avPlayer?.play()
     }
     
@@ -99,8 +103,26 @@ class EntryTableViewCell: UITableViewCell {
             
         } else if let videoURLString = entry.videoURL,
             let videoURL = URL(string: videoURLString) {
-            videoPlayerItem = AVPlayerItem(url: videoURL)
+            let finalVideoURL = createVideoURL(url: videoURL)!
+            videoPlayerItem = AVPlayerItem(url: finalVideoURL)
+            print("-----> \(finalVideoURL)")
+            let fm = FileManager.default
+            let exist = fm.fileExists(atPath: finalVideoURL.path)
+            print("-----> \(exist)")
+            photoImageView.image = nil
         }
+    }
+    
+    func createVideoURL(url: URL) -> URL? {
+        do {
+            let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let finalDirectory = directoryURL.appendingPathComponent(url.path)
+            return finalDirectory
+        } catch let e {
+            print("Error getting docs directory \(e)")
+        }
+        return nil
+        
     }
     
     private var dateFormatter: DateFormatter = {
