@@ -56,9 +56,9 @@ class EntryTableViewCell: UITableViewCell {
         avPlayer?.isMuted = true
         avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: photoImageView.frame.width, height: photoImageView.frame.height)
         
-        avPlayerLayer?.backgroundColor = UIColor.lightGray.cgColor
         self.backgroundColor = .clear
         self.videoPlayerSuperView.layer.insertSublayer(avPlayerLayer!, at: 0)
+        self.videoPlayerSuperView.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.playerItemDidReachEnd(notification:)),
@@ -79,8 +79,6 @@ class EntryTableViewCell: UITableViewCell {
     
    @discardableResult func flipImage(image: UIImage) -> UIImage {
         guard let cgImage = image.cgImage else {
-            // Could not form CGImage from UIImage for some reason.
-            // Return unflipped image
             return image
         }
         let flippedImage = UIImage(cgImage: cgImage,
@@ -98,7 +96,8 @@ class EntryTableViewCell: UITableViewCell {
         
         if let imageData = entry.imageData {
         photoImageView.image = UIImage(data: imageData as Data)
-        photoImageView.contentMode = UIViewContentMode.scaleAspectFit
+        photoImageView.contentMode = UIViewContentMode.scaleAspectFill
+        photoImageView.clipsToBounds = true
             
         } else if let videoURLString = entry.videoURL,
             let videoURL = URL(string: videoURLString) {

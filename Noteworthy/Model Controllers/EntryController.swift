@@ -17,15 +17,13 @@ class EntryController {
     
     
     // Source of all truth
-    var entriesOriginal: [Entry] {
+    var entries: [Entry] {
         
         let request: NSFetchRequest<Entry> = Entry.fetchRequest()
         
-        return (try? CoreDataStack.context.fetch(request)) ?? []
-    }
-    
-    var entries: [Entry] {
-        return entriesOriginal.reversed()
+        let results = (try? CoreDataStack.context.fetch(request)) ?? []
+        
+        return results.sorted(by: { $0.timestamp.timeIntervalSince1970 > $1.timestamp.timeIntervalSince1970 })
     }
     
     // CRUD Functions

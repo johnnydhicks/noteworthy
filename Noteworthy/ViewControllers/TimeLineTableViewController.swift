@@ -22,7 +22,7 @@ class TimeLineTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 350.0
+        tableView.rowHeight = 400.0
         
     }
     

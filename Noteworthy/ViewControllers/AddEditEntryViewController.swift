@@ -9,6 +9,9 @@
 import UIKit
 
 class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDelegate {
+    @IBAction func cancelButtonTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         

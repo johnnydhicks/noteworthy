@@ -55,7 +55,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         avPlayer?.actionAtItemEnd = .none
         avPlayer?.isMuted = true
         avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: imageView.frame.width, height: imageView.frame.height)
-        
         avPlayerLayer?.backgroundColor = UIColor.lightGray.cgColor
         self.videoView.layer.insertSublayer(avPlayerLayer!, at: 0)
         
@@ -84,7 +83,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
                 imagePicker.sourceType = .photoLibrary
                 imagePicker.allowsEditing = true
                 imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-                
+                imagePicker.videoMaximumDuration = 30
                 DispatchQueue.main.async {
                     self.present(imagePicker, animated: true, completion: nil)
                 }
@@ -110,8 +109,8 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-
-        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+    
+        if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             
             delegate?.photoSelectViewControllerSelected(image)
             selectMediaButton.setTitle("", for: UIControlState())
@@ -130,7 +129,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             selectMediaButton.setTitle("", for: UIControlState())
             selectMediaButton.backgroundColor = nil
             delegate?.photoSelectViewControllerSelectedMovie(movieURL: videoURL)
-            
+    
             self.videoPlayerItem = AVPlayerItem(url: videoURL)
             mediaSelected = true
             picker.dismiss(animated: true, completion: nil)
