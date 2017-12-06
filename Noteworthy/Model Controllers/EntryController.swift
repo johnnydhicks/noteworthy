@@ -17,13 +17,16 @@ class EntryController {
     
     
     // Source of all truth
-    var entries: [Entry] {
+    var entriesOriginal: [Entry] {
         
         let request: NSFetchRequest<Entry> = Entry.fetchRequest()
         
         return (try? CoreDataStack.context.fetch(request)) ?? []
     }
     
+    var entries: [Entry] {
+        return entriesOriginal.reversed()
+    }
     
     // CRUD Functions
     func createEntry(imageData: Data?, oldVideoURL: URL?, note: String) {
@@ -38,7 +41,7 @@ class EntryController {
                 let newVideoURL = directoryURL.appendingPathComponent(oldVideoURL.lastPathComponent)
                 try videoData.write(to: newVideoURL)
                 
-                _ = Entry(imageData: imageData, videoURL: newVideoURL, note: note)
+                _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
                 saveToPersistentStore()
 
             } catch {
