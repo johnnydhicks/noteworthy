@@ -189,30 +189,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert Note" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-ks-bw9">
-                                <rect key="frame" x="23" y="404" width="328" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <containerView opaque="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="kFp-IB-4xP">
-                                <rect key="frame" x="0.0" y="88" width="375" height="271"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="404"/>
                                 <connections>
                                     <segue destination="iZ0-sM-aKh" kind="embed" identifier="toContainerView" id="Oeg-oy-v9F"/>
                                 </connections>
                             </containerView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert Note" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-ks-bw9">
+                                <rect key="frame" x="9.6666666666666572" y="500" width="356" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="gVU-ks-bw9" firstAttribute="centerX" secondItem="YYt-7B-vgp" secondAttribute="centerX" id="011-wl-DbV"/>
+                            <constraint firstItem="gVU-ks-bw9" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" multiplier="19/20" id="0bV-T9-2Up"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" id="Cxo-Aj-V3U"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="top" secondItem="YYt-7B-vgp" secondAttribute="top" id="dG5-Bh-eqL"/>
-                            <constraint firstItem="kFp-IB-4xP" firstAttribute="height" secondItem="0Me-C6-ojo" secondAttribute="height" multiplier="1/3" id="qxD-Im-vby"/>
+                            <constraint firstItem="gVU-ks-bw9" firstAttribute="top" secondItem="kFp-IB-4xP" secondAttribute="bottom" constant="8" id="qNU-Rh-twj"/>
+                            <constraint firstItem="kFp-IB-4xP" firstAttribute="height" secondItem="0Me-C6-ojo" secondAttribute="height" multiplier="1/2" constant="-2" id="qxD-Im-vby"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="centerX" secondItem="YYt-7B-vgp" secondAttribute="centerX" id="rhi-Rd-gXZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YYt-7B-vgp"/>
                     </view>
                     <navigationItem key="navigationItem" title="Add/Edit Entry" id="s8G-ap-fBp">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="PfO-K7-t0t"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="AbO-Tv-RhK">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="pcZ-R4-7qX" id="Y2X-J1-ObP"/>
@@ -225,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5p-rR-6Xv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2047" y="-135"/>
+            <point key="canvasLocation" x="2045.5999999999999" y="-135.22167487684729"/>
         </scene>
         <!--Challenges-->
         <scene sceneID="klC-WQ-Zdc">
@@ -287,21 +290,22 @@
             <objects>
                 <viewController id="iZ0-sM-aKh" customClass="MediaSelectViewController" customModule="Noteworthy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qqJ-6M-hwX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="404"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HQ1-2J-UUl">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="404"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8J2-48-m1E">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="404"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0M-qN-DBq">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="271"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="404"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <state key="normal" title="Tap to Select Media Type">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="selectMediaButtonTapped:" destination="iZ0-sM-aKh" eventType="touchUpInside" id="4HY-cc-Z4Z"/>

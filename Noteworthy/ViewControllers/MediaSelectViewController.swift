@@ -23,6 +23,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     var avPlayer: AVPlayer?
     var avPlayerLayer: AVPlayerLayer?
     var paused: Bool = false
+    var mediaSelected: Bool = false
     
     var authorizationStatus: PHAuthorizationStatus = .notDetermined
     var videoPlayerItem: AVPlayerItem? = nil {
@@ -46,23 +47,16 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     func setupMoviePlayer() {
-        
+        guard self.avPlayer == nil else { return }
         self.avPlayer = AVPlayer.init(playerItem: self.videoPlayerItem)
         avPlayerLayer = AVPlayerLayer(player: avPlayer)
-        avPlayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspect
+        avPlayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         avPlayer?.volume = 3
         avPlayer?.actionAtItemEnd = .none
+        avPlayer?.isMuted = true
+        avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: imageView.frame.width, height: imageView.frame.height)
         
-        if UIScreen.main.bounds.width == 375 {
-            let widthRequired = videoView.frame.size.width
-            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
-        }else if UIScreen.main.bounds.width == 320 {
-            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: (videoView.frame.size.height - 120) * 1.78, height: videoView.frame.size.height - 120)
-        }else{
-            let widthRequired = videoView.frame.size.width
-            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
-        }
-        videoView.backgroundColor = .clear
+        avPlayerLayer?.backgroundColor = UIColor.lightGray.cgColor
         self.videoView.layer.insertSublayer(avPlayerLayer!, at: 0)
         
         NotificationCenter.default.addObserver(self,
@@ -71,13 +65,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
                                                object: avPlayer?.currentItem)
     }
     
-    func stopPlayback(){
-        self.avPlayer?.pause()
-    }
-    
-    func startPlayback() {
-        self.avPlayer?.play()
-    }
     
     // A notification is fired and seeker is sent to the beginning to loop the video again
     @objc func playerItemDidReachEnd(notification: Notification) {
@@ -95,10 +82,10 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             
             alertController.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_) in
                 imagePicker.sourceType = .photoLibrary
+                imagePicker.allowsEditing = true
                 imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
                 
                 DispatchQueue.main.async {
-                    
                     self.present(imagePicker, animated: true, completion: nil)
                 }
             }))
@@ -123,31 +110,35 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
+
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             delegate?.photoSelectViewControllerSelected(image)
             selectMediaButton.setTitle("", for: UIControlState())
+            selectMediaButton.backgroundColor = nil
             imageView.image = image
             imageView.contentMode = .scaleAspectFill
+            imageView.clipsToBounds = true
+            avPlayerLayer = nil
+            avPlayer = nil
+            mediaSelected = true
             
             picker.dismiss(animated: true, completion: nil)
             
         } else if let videoURL = info[UIImagePickerControllerMediaURL] as? URL {
             
             selectMediaButton.setTitle("", for: UIControlState())
+            selectMediaButton.backgroundColor = nil
             delegate?.photoSelectViewControllerSelectedMovie(movieURL: videoURL)
             
             self.videoPlayerItem = AVPlayerItem(url: videoURL)
-            
+            mediaSelected = true
             picker.dismiss(animated: true, completion: nil)
-            
         }
     }
 }
 
 protocol PhotoSelectViewControllerDelegate: class {
-    
     func photoSelectViewControllerSelected(_ image: UIImage)
     func photoSelectViewControllerSelectedMovie(movieURL: URL)
 }
