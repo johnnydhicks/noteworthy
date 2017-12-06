@@ -93,9 +93,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             
-            
-            
-            
             alertController.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_) in
                 imagePicker.sourceType = .photoLibrary
                 imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
@@ -108,10 +105,14 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             
         }
         
-        
+        // Configuration for adding a photo from using the Camera
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
                 imagePicker.sourceType = .camera
+                imagePicker.cameraCaptureMode = .photo
+                imagePicker.cameraCaptureMode = .video
+                imagePicker.modalPresentationStyle = .popover
+                imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
             }))
         }
@@ -119,17 +120,16 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         present(alertController, animated: true, completion: nil)
-        
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        
         
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             
             delegate?.photoSelectViewControllerSelected(image)
             selectMediaButton.setTitle("", for: UIControlState())
             imageView.image = image
+            imageView.contentMode = .scaleAspectFill
             
             picker.dismiss(animated: true, completion: nil)
             
@@ -144,20 +144,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             
         }
     }
-    
-    
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
 
 protocol PhotoSelectViewControllerDelegate: class {

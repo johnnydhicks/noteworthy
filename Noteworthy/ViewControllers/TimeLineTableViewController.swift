@@ -39,6 +39,16 @@ class TimeLineTableViewController: UITableViewController {
         return EntryController.shared.entries.count
     }
 
+    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? EntryTableViewCell else { return }
+        cell.avPlayer?.pause()
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? EntryTableViewCell else { return }
+        cell.avPlayer?.play()
+    }
+    
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell else { return EntryTableViewCell() }

@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import CoreImage
 
 class EntryTableViewCell: UITableViewCell {
     
@@ -25,37 +26,34 @@ class EntryTableViewCell: UITableViewCell {
     var avPlayer: AVPlayer?
     var avPlayerLayer: AVPlayerLayer?
     var paused: Bool = false
-    
+
     
     var videoPlayerItem: AVPlayerItem? = nil {
         didSet {
             avPlayer?.replaceCurrentItem(with: self.videoPlayerItem)
             avPlayer?.play()
+            flipImage(image: photoImageView.image ?? UIImage())
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setupMoviePlayer()
     }
     
-    func setupMoviePlayer() {
+    override func prepareForReuse() {
+        photoImageView.image = nil
+        videoPlayerItem = nil
+    }
+
     
+    func setupMoviePlayer() {
+        guard self.avPlayer == nil else { return }
         self.avPlayer = AVPlayer.init(playerItem: self.videoPlayerItem)
         avPlayerLayer = AVPlayerLayer(player: avPlayer)
         avPlayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         avPlayer?.volume = 3
         avPlayer?.actionAtItemEnd = .none
-        
-//        if UIScreen.main.bounds.width == 375 {
-//            let widthRequired = self.frame.size.width - 20
-//            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
-//        }else if UIScreen.main.bounds.width == 320 {
-//            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: (self.frame.size.height - 120) * 1.78, height: self.frame.size.height - 120)
-//        }else{
-//            let widthRequired = self.frame.size.width
-//            avPlayerLayer?.frame = CGRect.init(x: 0, y: 0, width: widthRequired, height: widthRequired/1.78)
-//        }
+        avPlayer?.isMuted = true
         avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: photoImageView.frame.width, height: photoImageView.frame.height)
         
         avPlayerLayer?.backgroundColor = UIColor.lightGray.cgColor
@@ -68,15 +66,6 @@ class EntryTableViewCell: UITableViewCell {
                                                object: avPlayer?.currentItem)
     }
     
-    func stopPlayback(){
-        self.avPlayer?.pause()
-    }
-    
-    func startPlayback() {
-        
-        self.avPlayer?.play()
-    }
-    
     // A notification is fired and seeker is sent to the beginning to loop the video again
     @objc func playerItemDidReachEnd(notification: Notification) {
         let p: AVPlayerItem = notification.object as! AVPlayerItem
@@ -85,24 +74,35 @@ class EntryTableViewCell: UITableViewCell {
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    }
+    
+    
+   @discardableResult func flipImage(image: UIImage) -> UIImage {
+        guard let cgImage = image.cgImage else {
+            // Could not form CGImage from UIImage for some reason.
+            // Return unflipped image
+            return image
+        }
+        let flippedImage = UIImage(cgImage: cgImage,
+                                   scale: image.scale,
+                                   orientation: .leftMirrored)
+        return flippedImage
     }
     
     func updateCell() {
         guard let entry = entry else { return }
-        
-        
-        
+    
         dateLabel.text = dateFormatter.string(from: entry.timestamp as Date)
         noteLabel.text = entry.note
         
         
         if let imageData = entry.imageData {
         photoImageView.image = UIImage(data: imageData as Data)
+        photoImageView.contentMode = UIViewContentMode.scaleAspectFit
             
         } else if let videoURLString = entry.videoURL,
             let videoURL = URL(string: videoURLString) {
+            setupMoviePlayer()
             let finalVideoURL = createVideoURL(url: videoURL)!
             videoPlayerItem = AVPlayerItem(url: finalVideoURL)
             print("-----> \(finalVideoURL)")
@@ -113,6 +113,7 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
     
+    // Creating video URL to be referenced in core data
     func createVideoURL(url: URL) -> URL? {
         do {
             let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -122,9 +123,9 @@ class EntryTableViewCell: UITableViewCell {
             print("Error getting docs directory \(e)")
         }
         return nil
-        
     }
     
+    // Formats the data for each entry
     private var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
