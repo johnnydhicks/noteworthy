@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aAO-Fq-CX1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aAO-Fq-CX1">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -178,22 +178,23 @@
                                     <segue destination="iZ0-sM-aKh" kind="embed" identifier="toContainerView" id="Oeg-oy-v9F"/>
                                 </connections>
                             </containerView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Insert Note" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="gVU-ks-bw9">
-                                <rect key="frame" x="9.6666666666666572" y="500" width="356" height="30"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="15"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAM-O4-ojc">
+                                <rect key="frame" x="0.0" y="491.99999999999994" width="375" height="162.33333333333331"/>
+                                <color key="backgroundColor" red="0.8734798210526481" green="0.8734798210526481" blue="0.8734798210526481" alpha="0.42698523116438358" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="13"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="gVU-ks-bw9" firstAttribute="centerX" secondItem="YYt-7B-vgp" secondAttribute="centerX" id="011-wl-DbV"/>
-                            <constraint firstItem="gVU-ks-bw9" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" multiplier="19/20" id="0bV-T9-2Up"/>
+                            <constraint firstItem="aAM-O4-ojc" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" id="1Ie-7f-6fB"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" id="Cxo-Aj-V3U"/>
+                            <constraint firstItem="aAM-O4-ojc" firstAttribute="height" secondItem="0Me-C6-ojo" secondAttribute="height" multiplier="1/5" id="b52-gE-ESa"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="top" secondItem="YYt-7B-vgp" secondAttribute="top" id="dG5-Bh-eqL"/>
-                            <constraint firstItem="gVU-ks-bw9" firstAttribute="top" secondItem="kFp-IB-4xP" secondAttribute="bottom" constant="8" id="qNU-Rh-twj"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="height" secondItem="0Me-C6-ojo" secondAttribute="height" multiplier="1/2" constant="-2" id="qxD-Im-vby"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="centerX" secondItem="YYt-7B-vgp" secondAttribute="centerX" id="rhi-Rd-gXZ"/>
+                            <constraint firstItem="aAM-O4-ojc" firstAttribute="centerX" secondItem="kFp-IB-4xP" secondAttribute="centerX" id="tCA-4E-tjP"/>
+                            <constraint firstItem="aAM-O4-ojc" firstAttribute="top" secondItem="kFp-IB-4xP" secondAttribute="bottom" id="uRu-Tx-yYY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YYt-7B-vgp"/>
                     </view>
@@ -210,7 +211,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="noteTextField" destination="gVU-ks-bw9" id="Wv1-yv-dc8"/>
+                        <outlet property="noteTextView" destination="aAM-O4-ojc" id="Thb-EN-Mu8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l5p-rR-6Xv" userLabel="First Responder" sceneMemberID="firstResponder"/>

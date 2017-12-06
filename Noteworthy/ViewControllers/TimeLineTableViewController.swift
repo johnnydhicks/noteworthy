@@ -24,6 +24,12 @@ class TimeLineTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = 400.0
         
+        let sess = AVAudioSession.sharedInstance()
+        if sess.isOtherAudioPlaying {
+            _ = try? sess.setCategory(AVAudioSessionCategoryAmbient, with: .duckOthers)
+            _ = try? sess.setActive(true, with: [])
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {

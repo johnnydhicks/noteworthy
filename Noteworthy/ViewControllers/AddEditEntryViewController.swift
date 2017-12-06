@@ -8,7 +8,17 @@
 
 import UIKit
 
-class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDelegate {
+class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDelegate, UITextViewDelegate {
+    
+    // MARK: - Properties & Outlets
+    var entry: Entry? 
+    var image: UIImage?
+    var movieURL: URL?
+    var placeholderLabel: UILabel!
+    
+    @IBOutlet weak var noteTextView: UITextView!
+    
+    // MARK: - ACTIONS
     @IBAction func cancelButtonTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -18,32 +28,57 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
         // Check if there is an image or a movie, get the data from it, and save it.
         if let image = image {
             guard let photoData = UIImagePNGRepresentation(image),
-                let note = noteTextField.text else { return }
+                let note = noteTextView.text else { return }
             
             if let entry = entry {
-            // update
+                EntryController.shared.update(entry: entry, imageData: photoData, oldVideoURL: nil, note: note)
             } else {
             
                 EntryController.shared.createEntry(imageData: photoData, oldVideoURL: nil, note: note)
             }
         } else if let movieURL = movieURL {
-            guard let note = noteTextField.text else { return }
-            
+            guard let note = noteTextView.text else { return }
+            if let entry = entry {
+                EntryController.shared.update(entry: entry, imageData: nil, oldVideoURL: movieURL, note: note)
+            }
             EntryController.shared.createEntry(imageData: nil, oldVideoURL: movieURL, note: note)
         }
         
         navigationController?.popViewController(animated: true)
     }
     
-    var entry: Entry? {
-        didSet {
-            if isViewLoaded { updateViews() }
-        }
-    }
-    var image: UIImage?
-    var movieURL: URL?
     
-    @IBOutlet weak var noteTextField: UITextField!
+
+    // MARK: - Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.barTintColor = UIColor.primaryAppBlue
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        
+        updateViews()
+        
+        noteTextView.delegate = self
+        placeholderLabel = UILabel()
+        placeholderLabel.text = "Enter Note Here..."
+        placeholderLabel.font = UIFont.italicSystemFont(ofSize: (noteTextView.font?.pointSize)!)
+        placeholderLabel.sizeToFit()
+        noteTextView.addSubview(placeholderLabel)
+        placeholderLabel.frame.origin = CGPoint(x: 5, y: (noteTextView.font?.pointSize)! / 2)
+        placeholderLabel.textColor = UIColor.lightGray
+        placeholderLabel.isHidden = !noteTextView.text.isEmpty
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        placeholderLabel.isHidden = !textView.text.isEmpty
+    }
+
+    
+    private func updateViews() {
+        guard let entry = entry else { return }
+        noteTextView.text = entry.note
+    }
     
     func photoSelectViewControllerSelected(_ image: UIImage) {
         self.image = image
@@ -53,34 +88,40 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
         self.movieURL = movieURL
     }
     
-    private func updateViews() {
-        guard let entry = entry else { return }
-        noteTextField.text = entry.note
-    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        navigationController?.navigationBar.barTintColor = UIColor.primaryAppBlue
-        
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        noteTextView.resignFirstResponder()
+        return true
     }
     
 
-    
+
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toContainerView" {
             guard let destinationVC = segue.destination as? MediaSelectViewController else { return }
             destinationVC.delegate = self
-            
+            if let entry = entry {
+                destinationVC.entry = entry
+            }
         }
     }
-
+    
+    // MARK: - Keyboard Offset Functions
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0{
+                self.view.frame.origin.y -= keyboardSize.height
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y != 0{
+                self.view.frame.origin.y += keyboardSize.height
+            }
+        }
+    }
 }

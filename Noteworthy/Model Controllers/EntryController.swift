@@ -56,11 +56,11 @@ class EntryController {
         
     }
     
-    func update(entry: Entry, imageData: Data?, OldVideoURL: URL?, note: String) {
+    func update(entry: Entry, imageData: Data?, oldVideoURL: URL?, note: String) {
         
-//        entry.note = note
-//        entry.imageData = imageData as NSData
-//        entry.videoURL = OldVideoURL
+        entry.imageData = imageData as NSData?
+        entry.videoURL = oldVideoURL?.absoluteString
+        entry.note = note
         saveToPersistentStore()
     }
     

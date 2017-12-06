@@ -13,7 +13,7 @@ import Photos
 
 class MediaSelectViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    // MARK: - Variables and Outlets
     weak var delegate: PhotoSelectViewControllerDelegate?
     
     @IBOutlet weak var videoView: UIView!
@@ -25,6 +25,8 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     var paused: Bool = false
     var mediaSelected: Bool = false
     
+    var entry: Entry?
+    
     var authorizationStatus: PHAuthorizationStatus = .notDetermined
     var videoPlayerItem: AVPlayerItem? = nil {
         didSet {
@@ -33,6 +35,8 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
+    
+    // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,8 +46,45 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             PHPhotoLibrary.requestAuthorization({ (status) in
                 self.authorizationStatus = status
             })
-            
         }
+        
+        updateViews()
+    }
+    
+    func updateViews() {
+        guard let entry = entry else { return }
+        if let videoURLString = entry.videoURL,
+            let videoURL = URL(string: videoURLString) {
+            
+            selectMediaButton.setTitle("", for: [])
+            selectMediaButton.backgroundColor = .clear
+            //            setupMoviePlayer()
+            let finalVideoURL = createVideoURL(url: videoURL)!
+            videoPlayerItem = AVPlayerItem(url: finalVideoURL)
+            print("-----> \(finalVideoURL)")
+            let fm = FileManager.default
+            let exist = fm.fileExists(atPath: finalVideoURL.path)
+            print("-----> \(exist)")
+            imageView.image = nil
+            
+        } else if let imageData = entry.imageData {
+            
+            imageView.image = UIImage(data: imageData as Data)
+            selectMediaButton.setTitle("", for: [])
+            selectMediaButton.backgroundColor = .clear
+            videoPlayerItem = nil
+        }
+    }
+    
+    func createVideoURL(url: URL) -> URL? {
+        do {
+            let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+            let finalDirectory = directoryURL.appendingPathComponent(url.path)
+            return finalDirectory
+        } catch let e {
+            print("Error getting docs directory \(e)")
+        }
+        return nil
     }
     
     func setupMoviePlayer() {
@@ -53,7 +94,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         avPlayerLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
         avPlayer?.volume = 3
         avPlayer?.actionAtItemEnd = .none
-        avPlayer?.isMuted = true
         avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: imageView.frame.width, height: imageView.frame.height)
         avPlayerLayer?.backgroundColor = UIColor.lightGray.cgColor
         self.videoView.layer.insertSublayer(avPlayerLayer!, at: 0)
@@ -96,7 +136,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
                 imagePicker.sourceType = .camera
                 imagePicker.cameraCaptureMode = .photo
-                imagePicker.cameraCaptureMode = .video
                 imagePicker.modalPresentationStyle = .popover
                 imagePicker.allowsEditing = true
                 self.present(imagePicker, animated: true, completion: nil)
@@ -109,7 +148,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-    
+        
         if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             
             delegate?.photoSelectViewControllerSelected(image)
@@ -120,7 +159,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             imageView.clipsToBounds = true
             avPlayerLayer = nil
             avPlayer = nil
-            mediaSelected = true
+            videoPlayerItem = nil
             
             picker.dismiss(animated: true, completion: nil)
             
@@ -129,9 +168,10 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             selectMediaButton.setTitle("", for: UIControlState())
             selectMediaButton.backgroundColor = nil
             delegate?.photoSelectViewControllerSelectedMovie(movieURL: videoURL)
-    
+            
+            imageView.image = nil
+            
             self.videoPlayerItem = AVPlayerItem(url: videoURL)
-            mediaSelected = true
             picker.dismiss(animated: true, completion: nil)
         }
     }
