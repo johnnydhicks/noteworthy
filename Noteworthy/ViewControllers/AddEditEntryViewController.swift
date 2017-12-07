@@ -24,7 +24,9 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     }
     
     @IBAction func saveButtonTapped(_ sender: Any) {
-        
+        if image == nil && movieURL == nil {
+            setUpAlertController()
+        }
         // Check if there is an image or a movie, get the data from it, and save it.
         if let image = image {
             guard let photoData = UIImagePNGRepresentation(image),
@@ -47,7 +49,14 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
         navigationController?.popViewController(animated: true)
     }
     
+    func setUpAlertController() {
+    let alertController = UIAlertController(title: "Missing Video/Image", message: "To save the entry, please select an image or video", preferredStyle: .alert)
+        let okAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAlert)
+        
+        present(alertController, animated: true)
     
+    }
 
     // MARK: - Methods
     override func viewDidLoad() {

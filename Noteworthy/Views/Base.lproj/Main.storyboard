@@ -10,9 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Arial.ttf">
-            <string>ArialMT</string>
-        </array>
         <array key="ArialRoundedMTBold.ttf">
             <string>ArialRoundedMTBold</string>
         </array>
@@ -279,15 +276,15 @@
                                             <rect key="frame" x="7.6666666666666572" y="384" width="360" height="76.666666666666686"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gam-Yd-HnN">
-                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="34.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="37"/>
                                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
                                                     <color key="textColor" red="0.15683796999999999" green="0.40455868839999998" blue="0.76085025070000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIU-fq-NpJ">
-                                                    <rect key="frame" x="0.0" y="34.666666666666686" width="360" height="42"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIU-fq-NpJ">
+                                                    <rect key="frame" x="0.0" y="37" width="360" height="39.666666666666657"/>
+                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -332,15 +329,15 @@
                                             <rect key="frame" x="7.6666666666666572" y="384" width="360" height="76.666666666666686"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-sE-5Rj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="34.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="37"/>
                                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
                                                     <color key="textColor" red="0.15683796999999999" green="0.40455868839999998" blue="0.76085025070000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmN-Cf-gxT">
-                                                    <rect key="frame" x="0.0" y="34.666666666666686" width="360" height="42"/>
-                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
-                                                    <nil key="textColor"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmN-Cf-gxT">
+                                                    <rect key="frame" x="0.0" y="37" width="360" height="39.666666666666657"/>
+                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="12"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -400,7 +397,8 @@
                             </containerView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAM-O4-ojc">
                                 <rect key="frame" x="0.0" y="491.99999999999994" width="375" height="162.33333333333331"/>
-                                <color key="backgroundColor" red="0.8734798210526481" green="0.8734798210526481" blue="0.8734798210526481" alpha="0.42698523116438358" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="13"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -470,7 +468,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UVv-bJ-ry5" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Timeline" image="HomeButton" id="iHs-nv-Wuj"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="37g-mO-ihO">
+                    <navigationBar key="navigationBar" alpha="0.0" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="37g-mO-ihO">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -510,10 +508,10 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0M-qN-DBq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="404"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.2580285370349884" green="0.4938201904296875" blue="0.7882952094078064" alpha="0.11210402397260275" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                 <state key="normal" title="Tap to Select Media Type">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" red="0.2580285370349884" green="0.4938201904296875" blue="0.7882952094078064" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>
                                 <connections>
                                     <action selector="selectMediaButtonTapped:" destination="iZ0-sM-aKh" eventType="touchUpInside" id="4HY-cc-Z4Z"/>
