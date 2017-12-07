@@ -18,6 +18,11 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        entry = nil
+    }
+    
     @IBOutlet weak var videoPlayerSuperView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -32,7 +37,6 @@ class EntryTableViewCell: UITableViewCell {
         didSet {
             avPlayer?.replaceCurrentItem(with: self.videoPlayerItem)
             avPlayer?.play()
-            flipImage(image: photoImageView.image ?? UIImage())
         }
     }
     
@@ -71,15 +75,7 @@ class EntryTableViewCell: UITableViewCell {
     }
     
     
-   @discardableResult func flipImage(image: UIImage) -> UIImage {
-        guard let cgImage = image.cgImage else {
-            return image
-        }
-        let flippedImage = UIImage(cgImage: cgImage,
-                                   scale: image.scale,
-                                   orientation: .leftMirrored)
-        return flippedImage
-    }
+   
     
     func updateCell() {
         guard let entry = entry else { return }
@@ -87,13 +83,7 @@ class EntryTableViewCell: UITableViewCell {
         dateLabel.text = dateFormatter.string(from: entry.timestamp as Date)
         noteLabel.text = entry.note
         
-        
-        if let imageData = entry.imageData {
-        photoImageView.image = UIImage(data: imageData as Data)
-        photoImageView.contentMode = UIViewContentMode.scaleAspectFill
-        photoImageView.clipsToBounds = true
-            
-        } else if let videoURLString = entry.videoURL,
+        if let videoURLString = entry.videoURL,
             let videoURL = URL(string: videoURLString) {
             setupMoviePlayer()
             let finalVideoURL = createVideoURL(url: videoURL)!
@@ -102,7 +92,6 @@ class EntryTableViewCell: UITableViewCell {
             let fm = FileManager.default
             let exist = fm.fileExists(atPath: finalVideoURL.path)
             print("-----> \(exist)")
-            photoImageView.image = nil
         }
     }
     

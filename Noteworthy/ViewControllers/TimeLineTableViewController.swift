@@ -46,11 +46,11 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
-        tableView.reloadData()
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(true)
+//        
+//        tableView.reloadData()
+//    }
 
 
     // MARK: - Table view data source
@@ -72,12 +72,26 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell,
-        let entries = fetchedResultsController.fetchedObjects else { return EntryTableViewCell() }
-        
+        guard let entries = fetchedResultsController.fetchedObjects else { return EntryTableViewCell() }
         let entry = entries[indexPath.row]
-        cell.entry = entry
-        return cell
+        
+        if entry.imageData != nil {
+            
+            // Set up photo cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryPhotoCell", for: indexPath) as? EntryWithPhotoTableViewCell else { return UITableViewCell() }
+            
+            cell.entry = entry
+            return cell
+        } else if entry.videoURL != nil {
+            // Set up video cell
+            
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell else { return UITableViewCell() }
+
+            cell.entry = entry
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
  
 
@@ -101,7 +115,7 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toEditEntry" {
+        if segue.identifier == "toEditEntry" || segue.identifier == "toAddEditEntry" {
             if let detailVC = segue.destination as? AddEditEntryViewController,
                 let selectedRow = tableView.indexPathForSelectedRow?.row {
                 

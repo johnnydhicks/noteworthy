@@ -78,6 +78,15 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     private func updateViews() {
         guard let entry = entry else { return }
         noteTextView.text = entry.note
+        
+        if let imageData = entry.imageData {
+            image = UIImage(data: imageData as Data)
+        }
+        
+        if let videoURLString = entry.videoURL,
+            let videoURL = URL(string: videoURLString) {
+            movieURL = videoURL
+        }
     }
     
     func photoSelectViewControllerSelected(_ image: UIImage) {

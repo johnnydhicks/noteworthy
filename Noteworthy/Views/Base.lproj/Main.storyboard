@@ -284,7 +284,7 @@
                                                     <color key="textColor" red="0.15683796999999999" green="0.40455868839999998" blue="0.76085025070000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIU-fq-NpJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIU-fq-NpJ">
                                                     <rect key="frame" x="0.0" y="34.666666666666686" width="360" height="42"/>
                                                     <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
                                                     <nil key="textColor"/>
@@ -313,9 +313,56 @@
                                 <connections>
                                     <outlet property="dateLabel" destination="gam-Yd-HnN" id="M6K-FV-9PJ"/>
                                     <outlet property="noteLabel" destination="lIU-fq-NpJ" id="4uq-Pt-Iec"/>
-                                    <outlet property="photoImageView" destination="IUJ-E7-tHQ" id="dMS-XJ-0WY"/>
+                                    <outlet property="photoImageView" destination="IUJ-E7-tHQ" id="gC8-tb-jtd"/>
                                     <outlet property="videoPlayerSuperView" destination="6Oe-WL-KCW" id="gsq-vM-72d"/>
                                     <segue destination="pcZ-R4-7qX" kind="show" identifier="toEditEntry" id="hhR-Jh-LDY"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="entryPhotoCell" rowHeight="461" id="LJY-Fa-Ld2" customClass="EntryWithPhotoTableViewCell" customModule="Noteworthy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="489" width="375" height="461"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LJY-Fa-Ld2" id="0Ie-hk-Qw0">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="460.66666666666669"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eo0-mS-hvY">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qHb-vT-q2J">
+                                            <rect key="frame" x="7.6666666666666572" y="384" width="360" height="76.666666666666686"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-sE-5Rj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="34.666666666666664"/>
+                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
+                                                    <color key="textColor" red="0.15683796999999999" green="0.40455868839999998" blue="0.76085025070000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmN-Cf-gxT">
+                                                    <rect key="frame" x="0.0" y="34.666666666666686" width="360" height="42"/>
+                                                    <fontDescription key="fontDescription" name="ArialMT" family="Arial" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="eo0-mS-hvY" firstAttribute="top" secondItem="0Ie-hk-Qw0" secondAttribute="top" id="0Qe-MB-Ssn"/>
+                                        <constraint firstItem="qHb-vT-q2J" firstAttribute="width" secondItem="0Ie-hk-Qw0" secondAttribute="width" multiplier="24/25" id="DRz-ck-gfg"/>
+                                        <constraint firstItem="eo0-mS-hvY" firstAttribute="height" secondItem="0Ie-hk-Qw0" secondAttribute="height" multiplier="5/6" id="Wnh-kU-d1T"/>
+                                        <constraint firstAttribute="trailing" secondItem="eo0-mS-hvY" secondAttribute="trailing" id="YSL-Iz-czx"/>
+                                        <constraint firstItem="eo0-mS-hvY" firstAttribute="centerX" secondItem="0Ie-hk-Qw0" secondAttribute="centerX" id="cuk-9J-a1F"/>
+                                        <constraint firstAttribute="bottom" secondItem="qHb-vT-q2J" secondAttribute="bottom" id="fw1-cC-HlN"/>
+                                        <constraint firstItem="eo0-mS-hvY" firstAttribute="leading" secondItem="0Ie-hk-Qw0" secondAttribute="leading" id="fxs-oe-Wog"/>
+                                        <constraint firstItem="qHb-vT-q2J" firstAttribute="centerX" secondItem="0Ie-hk-Qw0" secondAttribute="centerX" id="lcv-d5-sPF"/>
+                                        <constraint firstItem="qHb-vT-q2J" firstAttribute="top" secondItem="eo0-mS-hvY" secondAttribute="bottom" id="sIk-dd-hZC"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="dateLabel" destination="aiE-sE-5Rj" id="6BH-MH-5BO"/>
+                                    <outlet property="noteLabel" destination="qmN-Cf-gxT" id="pbP-qy-8U0"/>
+                                    <outlet property="photoImageView" destination="eo0-mS-hvY" id="feR-wU-PHl"/>
+                                    <segue destination="pcZ-R4-7qX" kind="show" identifier="toAddEditEntry" id="AEc-fF-hGv"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -519,6 +566,6 @@
         <image name="TravelButton" width="122" height="122"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hhR-Jh-LDY"/>
+        <segue reference="AEc-fF-hGv"/>
     </inferredMetricsTieBreakers>
 </document>
