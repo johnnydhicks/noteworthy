@@ -82,10 +82,12 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     
     func photoSelectViewControllerSelected(_ image: UIImage) {
         self.image = image
+        self.movieURL = nil
     }
     
     func photoSelectViewControllerSelectedMovie(movieURL: URL) {
         self.movieURL = movieURL
+        self.image = nil
     }
     
     

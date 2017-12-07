@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534296730.702849"
+            timestampString = "534363930.863894"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534296730.702935"
+            timestampString = "534363930.863988"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -42,29 +42,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/TimeLineTableViewController.swift"
-            timestampString = "534296730.70302"
+            timestampString = "534363930.864048"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "69"
-            endingLineNumber = "69"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "TimeLineTableViewController"
             landmarkType = "3">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Noteworthy/Model Controllers/EntryController.swift"
-            timestampString = "534296730.703131"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "createEntry(imageData:oldVideoURL:note:)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Model Controllers/EntryController.swift"
-            timestampString = "534296730.703185"
+            timestampString = "534321831.012158"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
             endingLineNumber = "52"
-            landmarkName = "createEntry(imageData:oldVideoURL:note:)"
-            landmarkType = "7">
+            landmarkName = "unknown"
+            landmarkType = "0">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -90,27 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/TimeLineTableViewController.swift"
-            timestampString = "534296730.703238"
+            timestampString = "534363930.86418"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "74"
             endingLineNumber = "74"
-            landmarkName = "tableView(_:commit:forRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Noteworthy/ViewControllers/TimeLineTableViewController.swift"
-            timestampString = "534296730.703293"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -122,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Views/EntryTableViewCell.swift"
-            timestampString = "534296730.703349"
+            timestampString = "534363930.864243"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
@@ -138,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Views/EntryTableViewCell.swift"
-            timestampString = "534296730.703453"
+            timestampString = "534363930.864551"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "17"
@@ -154,13 +122,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Views/EntryTableViewCell.swift"
-            timestampString = "534296730.70355"
+            timestampString = "534363930.864765"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
             endingLineNumber = "63"
-            landmarkName = "setupMoviePlayer()"
-            landmarkType = "7">
+            landmarkName = "EntryTableViewCell"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Views/EntryTableViewCell.swift"
-            timestampString = "534296730.703623"
+            timestampString = "534363930.865026"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -202,7 +170,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Views/EntryTableViewCell.swift"
-            timestampString = "534296730.703675"
+            timestampString = "534363930.865259"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
@@ -218,7 +186,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Views/EntryTableViewCell.swift"
-            timestampString = "534296730.703727"
+            timestampString = "534363930.865503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -234,7 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534296730.703785"
+            timestampString = "534363930.865726"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -250,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534296730.703889"
+            timestampString = "534363930.865782"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -266,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534296730.703953"
+            timestampString = "534363930.865831"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
             landmarkName = "setupMoviePlayer()"
             landmarkType = "7">
          </BreakpointContent>

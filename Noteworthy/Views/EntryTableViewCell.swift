@@ -40,12 +40,6 @@ class EntryTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    override func prepareForReuse() {
-        photoImageView.image = nil
-        videoPlayerItem = nil
-    }
-
-    
     func setupMoviePlayer() {
         guard self.avPlayer == nil else { return }
         self.avPlayer = AVPlayer.init(playerItem: self.videoPlayerItem)

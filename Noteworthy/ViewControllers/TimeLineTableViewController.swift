@@ -8,18 +8,25 @@
 
 import UIKit
 import AVFoundation
+import CoreData
 
-class TimeLineTableViewController: UITableViewController {
+class TimeLineTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
     var avPlayer: AVPlayer!
     var avPlayerLayer: AVPlayerLayer!
     var paused: Bool = false
     
+    lazy var fetchedResultsController: NSFetchedResultsController<Entry> = {
+        let context = CoreDataStack.context
+        let fetchRequest : NSFetchRequest<Entry> = Entry.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let frc = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
+        frc.delegate = self
+        return frc
+    }()
     
     
-
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = 400.0
@@ -28,6 +35,13 @@ class TimeLineTableViewController: UITableViewController {
         if sess.isOtherAudioPlaying {
             _ = try? sess.setCategory(AVAudioSessionCategoryAmbient, with: .duckOthers)
             _ = try? sess.setActive(true, with: [])
+        }
+        
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch let error as NSError {
+            NSLog("Error performing fetch on NSFetchedResultsController: \(error)")
         }
         
     }
@@ -42,7 +56,8 @@ class TimeLineTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return EntryController.shared.entries.count
+        guard let sections = fetchedResultsController.sections, sections.count > section else { return 0 }
+        return sections[section].numberOfObjects
     }
 
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -57,9 +72,9 @@ class TimeLineTableViewController: UITableViewController {
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell else { return EntryTableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell,
+        let entries = fetchedResultsController.fetchedObjects else { return EntryTableViewCell() }
         
-        let entries = EntryController.shared.entries
         let entry = entries[indexPath.row]
         cell.entry = entry
         return cell
@@ -70,14 +85,16 @@ class TimeLineTableViewController: UITableViewController {
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let ec = EntryController.shared
-            let entry = ec.entries[indexPath.row]
-            ec.delete(entry: entry)
             
-            // Delete the row from the table view
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let entry = fetchedResultsController.object(at: indexPath)
+            EntryController.shared.delete(entry: entry)
+            
         }
     }
+    
+//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.reloadData()
+//    }
 
 
 
@@ -93,4 +110,28 @@ class TimeLineTableViewController: UITableViewController {
             }
         }
     }
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .delete:
+            guard let indexPath = indexPath else { return }
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        case .insert:
+            guard let newIndexPath = newIndexPath else { return }
+            tableView.insertRows(at: [newIndexPath], with: .automatic)
+        case .move:
+            guard let indexPath = indexPath,
+                let newIndexPath = newIndexPath else { return }
+            tableView.moveRow(at: indexPath, to: newIndexPath)
+        case .update:
+            guard let indexPath = indexPath else { return }
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
 }
+
+

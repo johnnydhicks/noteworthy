@@ -95,7 +95,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         avPlayer?.volume = 3
         avPlayer?.actionAtItemEnd = .none
         avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: imageView.frame.width, height: imageView.frame.height)
-        avPlayerLayer?.backgroundColor = UIColor.lightGray.cgColor
         self.videoView.layer.insertSublayer(avPlayerLayer!, at: 0)
         
         NotificationCenter.default.addObserver(self,

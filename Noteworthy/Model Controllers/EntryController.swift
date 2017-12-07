@@ -15,8 +15,8 @@ class EntryController {
     // Shared Instance
     static let shared = EntryController()
     
-    
-    // Source of all truth
+    var fetchedResultsController: NSFetchedResultsController<Entry>!
+
     var entries: [Entry] {
         
         let request: NSFetchRequest<Entry> = Entry.fetchRequest()
