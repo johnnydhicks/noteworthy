@@ -23,6 +23,7 @@
 		3850AA251FD5E83C0057D125 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA241FD5E83C0057D125 /* Theme.swift */; };
 		3850AA271FD5FF5F0057D125 /* MediaSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA261FD5FF5F0057D125 /* MediaSelectViewController.swift */; };
 		3878AAB41FD9DF2C00C18C56 /* EntryWithPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3878AAB31FD9DF2C00C18C56 /* EntryWithPhotoTableViewCell.swift */; };
+		3878AAB61FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3878AAB51FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift */; };
 		389E01971FD0C69B00F18ECE /* Challenge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01961FD0C69B00F18ECE /* Challenge.swift */; };
 		389E019A1FD0C72E00F18ECE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01991FD0C72E00F18ECE /* CloudKitManager.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		3850AA241FD5E83C0057D125 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		3850AA261FD5FF5F0057D125 /* MediaSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaSelectViewController.swift; sourceTree = "<group>"; };
 		3878AAB31FD9DF2C00C18C56 /* EntryWithPhotoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryWithPhotoTableViewCell.swift; sourceTree = "<group>"; };
+		3878AAB51FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCategoryViewController.swift; sourceTree = "<group>"; };
 		388A1BA81FCE13BD0005719E /* Noteworthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Noteworthy.entitlements; sourceTree = "<group>"; };
 		389E01961FD0C69B00F18ECE /* Challenge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Challenge.swift; sourceTree = "<group>"; };
 		389E01991FD0C72E00F18ECE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				3850AA1E1FD5D5270057D125 /* TimeLineTableViewController.swift */,
 				3850AA201FD5D5620057D125 /* AddEditEntryViewController.swift */,
 				3850AA261FD5FF5F0057D125 /* MediaSelectViewController.swift */,
+				3878AAB51FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3878AAB61FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift in Sources */,
 				3878AAB41FD9DF2C00C18C56 /* EntryWithPhotoTableViewCell.swift in Sources */,
 				3850AA231FD5D6EC0057D125 /* EntryTableViewCell.swift in Sources */,
 				3850AA1F1FD5D5270057D125 /* TimeLineTableViewController.swift in Sources */,

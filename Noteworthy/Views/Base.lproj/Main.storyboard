@@ -41,27 +41,27 @@
         <!--Challenges-->
         <scene sceneID="5DJ-Pl-rva">
             <objects>
-                <viewController id="hsE-nQ-QfK" sceneMemberID="viewController">
+                <viewController id="hsE-nQ-QfK" customClass="ChallengeCategoryViewController" customModule="Noteworthy" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Scb-Ju-Pw3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LaunchScreenImage" translatesAutoresizingMaskIntoConstraints="NO" id="Bnm-UM-IBM">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="-2" width="375" height="731"/>
                             </imageView>
                             <view alpha="0.40000000000000002" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5xT-jh-AgM">
-                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.11764705882352941" green="0.41568627450980389" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-0N-2Ck">
-                                <rect key="frame" x="0.0" y="88" width="375" height="107"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="122"/>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="100"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="HsD-f6-2WC">
-                                <rect key="frame" x="0.0" y="195" width="375" height="534"/>
+                                <rect key="frame" x="0.33333333333334281" y="195" width="375" height="534"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="acE-Lu-xe9">
                                         <rect key="frame" x="62.666666666666657" y="0.0" width="249.99999999999997" height="178"/>
@@ -207,13 +207,13 @@
                             <constraint firstItem="4FY-0N-2Ck" firstAttribute="top" secondItem="TVy-Zx-8DV" secondAttribute="top" id="Aeu-OV-0Nx"/>
                             <constraint firstItem="TVy-Zx-8DV" firstAttribute="trailing" secondItem="Bnm-UM-IBM" secondAttribute="trailing" id="AxY-Iz-EX7"/>
                             <constraint firstItem="4FY-0N-2Ck" firstAttribute="width" secondItem="Bnm-UM-IBM" secondAttribute="width" id="Cv9-9v-P1T"/>
+                            <constraint firstItem="HsD-f6-2WC" firstAttribute="height" secondItem="TVy-Zx-8DV" secondAttribute="height" multiplier="5/6" id="GQ6-Gk-woa"/>
                             <constraint firstItem="TVy-Zx-8DV" firstAttribute="bottom" secondItem="HsD-f6-2WC" secondAttribute="bottom" id="ZNk-mL-eE8"/>
-                            <constraint firstItem="HsD-f6-2WC" firstAttribute="height" secondItem="Bnm-UM-IBM" secondAttribute="height" multiplier="5/6" id="Zf0-EO-hMJ"/>
                             <constraint firstItem="TVy-Zx-8DV" firstAttribute="bottom" secondItem="Bnm-UM-IBM" secondAttribute="bottom" id="ebh-aN-b7h"/>
                             <constraint firstItem="4FY-0N-2Ck" firstAttribute="height" secondItem="Bnm-UM-IBM" secondAttribute="height" multiplier="1/6" id="gNV-70-8qv"/>
                             <constraint firstItem="4FY-0N-2Ck" firstAttribute="centerX" secondItem="Scb-Ju-Pw3" secondAttribute="centerX" id="hAZ-YN-Q62"/>
-                            <constraint firstItem="Bnm-UM-IBM" firstAttribute="top" secondItem="TVy-Zx-8DV" secondAttribute="top" id="jMO-qm-eHa"/>
-                            <constraint firstItem="HsD-f6-2WC" firstAttribute="width" secondItem="Bnm-UM-IBM" secondAttribute="width" id="lxr-ad-kX4"/>
+                            <constraint firstItem="Bnm-UM-IBM" firstAttribute="top" secondItem="TVy-Zx-8DV" secondAttribute="top" constant="-90" id="jMO-qm-eHa"/>
+                            <constraint firstItem="HsD-f6-2WC" firstAttribute="width" secondItem="Scb-Ju-Pw3" secondAttribute="width" id="m7u-Iu-Uf5"/>
                             <constraint firstItem="HsD-f6-2WC" firstAttribute="centerX" secondItem="Scb-Ju-Pw3" secondAttribute="centerX" id="srX-8u-9Zc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="TVy-Zx-8DV"/>
@@ -446,7 +446,7 @@
                         <color key="badgeColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBarItem>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d7t-Hh-sgq">
+                    <navigationBar key="navigationBar" alpha="0.40000000596046398" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d7t-Hh-sgq">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.11764705882352941" green="0.41568627450980389" blue="0.76078431372549016" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
