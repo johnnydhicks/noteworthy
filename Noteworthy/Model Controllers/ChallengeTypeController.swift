@@ -9,19 +9,20 @@
 import Foundation
 import CoreData
 
-class ChallengeTypeController {
-    static let shared = ChallengeTypeController()
-    
-    var challengeTypes: [ChallengeType] {
-        return [ChallengeType(name: "Outdoor"),
-                ChallengeType(name: "Fitness"),
-                ChallengeType(name: "Travel"),
-                ChallengeType(name: "Survival"),
-                ChallengeType(name: "Food"),
-                ChallengeType(name: "Service")
-        ]
-    
-    }
-    
+//class ChallengeTypeController {
+//    static let shared = ChallengeTypeController()
+//    
+//    var challengeTypes: [ChallengeType] {
+//        return [ChallengeType(name: "Outdoor"),
+//                ChallengeType(name: "Fitness"),
+//                ChallengeType(name: "Travel"),
+//                ChallengeType(name: "Survival"),
+//                ChallengeType(name: "Food"),
+//                ChallengeType(name: "Service")
+//        ]
+//    
+//    }
+//    
+//
+//}
 
-}

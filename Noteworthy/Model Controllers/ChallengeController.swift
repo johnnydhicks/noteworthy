@@ -12,9 +12,7 @@ import CoreData
 class ChallengeController: NSObject, NSFetchedResultsControllerDelegate {
     
     static let shared = ChallengeController()
-    
-    var fetchedResultsController: NSFetchedResultsController<Challenge>!
-    
+        
     func setupChallengeTypesAndChallenges() {
         let outdoor = ChallengeType(name: "Outdoor")
         let fitness = ChallengeType(name: "Fitness")

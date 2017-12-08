@@ -24,6 +24,7 @@ class ChallengeTableViewCell: UITableViewCell {
     @IBAction func completeButtonTapped(_ sender: UIButton) {
         
         delegate?.buttonCellButtonTapped(self)
+        updateButton(challenge!.isComplete)
     }
     
     func updateButton(_ isComplete: Bool) {

@@ -12,8 +12,8 @@ class ChallengesTableViewController: UITableViewController, ChallengeTableViewCe
     
     
     func buttonCellButtonTapped(_ sender: ChallengeTableViewCell) {
-        guard let indexPath = tableView.indexPath(for: sender) else { return }
-        let challenge = challengeType?.challenges?.object(at: indexPath) as? Challenge
+        guard let indexPath = tableView.indexPath(for: sender),
+        let challenge = challengeType?.challenges?.object(at: indexPath.row) as? Challenge else { return }
         
         ChallengeController.shared.toggleIsCompleteFor(challenge: challenge)
     }
@@ -25,8 +25,9 @@ class ChallengesTableViewController: UITableViewController, ChallengeTableViewCe
     
     override func viewDidLoad() {
         super.viewDidLoad()
-            tableView.reloadData()
+    
         navigationController?.setNavigationBarHidden(false, animated: false)
+        
     }
     
     var challengeType: ChallengeType?

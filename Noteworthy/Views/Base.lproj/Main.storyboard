@@ -256,17 +256,17 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="53.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-wJ-WEF">
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-wJ-WEF">
                                             <rect key="frame" x="9.6666666666666572" y="6.6666666666666679" width="356" height="40.333333333333329"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqT-AR-d3M">
-                                                    <rect key="frame" x="0.0" y="0.0" width="308.66666666666669" height="40.333333333333336"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqT-AR-d3M">
+                                                    <rect key="frame" x="0.0" y="-6.666666666666667" width="0.0" height="0.0"/>
                                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF7-3G-rVO">
-                                                    <rect key="frame" x="315.66666666666663" y="0.0" width="40.333333333333314" height="40.333333333333336"/>
+                                                    <rect key="frame" x="-9.6666666666666661" y="-6.666666666666667" width="0.0" height="0.0"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="CF7-3G-rVO" secondAttribute="height" multiplier="1:1" id="ZiC-k3-eSt"/>
                                                     </constraints>
@@ -276,6 +276,9 @@
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="CF7-3G-rVO" firstAttribute="height" secondItem="LqT-AR-d3M" secondAttribute="height" multiplier="2" id="M1u-d6-qv6"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
@@ -625,6 +628,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AEc-fF-hGv"/>
-        <segue reference="0Cy-Wi-HVh"/>
+        <segue reference="2SQ-1q-rQQ"/>
     </inferredMetricsTieBreakers>
 </document>
