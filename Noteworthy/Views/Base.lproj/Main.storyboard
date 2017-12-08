@@ -5,6 +5,7 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -73,6 +74,9 @@
                                                             <constraint firstAttribute="height" constant="100" id="vEh-O7-bvG"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="OutdoorButton"/>
+                                                        <connections>
+                                                            <segue destination="Kw0-4B-Cgf" kind="show" identifier="toOutdoorChallenges" id="50i-hC-WZX"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outdoor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aSI-Dl-yYQ">
                                                         <rect key="frame" x="0.0" y="102.99999999999997" width="100" height="16.333333333333329"/>
@@ -93,6 +97,9 @@
                                                             <constraint firstAttribute="width" constant="100" id="O2D-Ru-DCc"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="FitnessButton"/>
+                                                        <connections>
+                                                            <segue destination="Kw0-4B-Cgf" kind="show" identifier="toFitnessChallenges" id="30J-bd-zW2"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fitness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="83N-Vg-Qd2">
                                                         <rect key="frame" x="0.0" y="102.99999999999997" width="100" height="16.333333333333329"/>
@@ -118,6 +125,9 @@
                                                             <constraint firstAttribute="height" constant="100" id="pv7-a2-QnO"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="TravelButton"/>
+                                                        <connections>
+                                                            <segue destination="Kw0-4B-Cgf" kind="show" identifier="toTravelChallenges" id="erK-Jz-9QL"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travel" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPH-yX-2lv">
                                                         <rect key="frame" x="0.0" y="103" width="100" height="16.333333333333329"/>
@@ -138,6 +148,9 @@
                                                             <constraint firstAttribute="width" constant="100" id="Q6d-xG-yui"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="CampingButton"/>
+                                                        <connections>
+                                                            <segue destination="Kw0-4B-Cgf" kind="show" identifier="toSurvivalChallenges" id="W7p-ih-wd9"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Survival" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UC4-db-OSr">
                                                         <rect key="frame" x="0.0" y="103" width="100" height="16.333333333333329"/>
@@ -163,6 +176,9 @@
                                                             <constraint firstAttribute="width" constant="100" id="lMU-RC-LEm"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="FoodButton"/>
+                                                        <connections>
+                                                            <segue destination="Kw0-4B-Cgf" kind="show" identifier="toFoodChallenges" id="2SQ-1q-rQQ"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxV-iy-Jxf">
                                                         <rect key="frame" x="0.0" y="103" width="100" height="16.333333333333329"/>
@@ -183,6 +199,9 @@
                                                             <constraint firstAttribute="width" constant="100" id="Nq3-0K-zi3"/>
                                                         </constraints>
                                                         <state key="normal" backgroundImage="CommunityButton"/>
+                                                        <connections>
+                                                            <segue destination="Kw0-4B-Cgf" kind="show" identifier="toServiceChallenges" id="0Cy-Wi-HVh"/>
+                                                        </connections>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Service" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0Q-Pb-zYn">
                                                         <rect key="frame" x="0.0" y="103" width="100" height="16.333333333333329"/>
@@ -221,22 +240,55 @@
             </objects>
             <point key="canvasLocation" x="1346.4000000000001" y="782.51231527093603"/>
         </scene>
-        <!--Table View Controller-->
+        <!--ChallengeType-->
         <scene sceneID="ULm-g6-YJ2">
             <objects>
-                <tableViewController id="Kw0-4B-Cgf" sceneMemberID="viewController">
+                <tableViewController id="Kw0-4B-Cgf" customClass="ChallengesTableViewController" customModule="Noteworthy" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="GF6-aA-0cg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCell" id="H9a-Y4-yxj">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="challengeCell" rowHeight="54" id="H9a-Y4-yxj" customClass="ChallengeTableViewCell" customModule="Noteworthy" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="54"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="H9a-Y4-yxj" id="cSu-J6-PyD">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="53.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="iuc-wJ-WEF">
+                                            <rect key="frame" x="9.6666666666666572" y="6.6666666666666679" width="356" height="40.333333333333329"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqT-AR-d3M">
+                                                    <rect key="frame" x="0.0" y="0.0" width="308.66666666666669" height="40.333333333333336"/>
+                                                    <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CF7-3G-rVO">
+                                                    <rect key="frame" x="315.66666666666663" y="0.0" width="40.333333333333314" height="40.333333333333336"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="CF7-3G-rVO" secondAttribute="height" multiplier="1:1" id="ZiC-k3-eSt"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="completeChallenge"/>
+                                                    <connections>
+                                                        <action selector="completeButtonTapped:" destination="H9a-Y4-yxj" eventType="touchUpInside" id="8Lz-bi-HrS"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="iuc-wJ-WEF" firstAttribute="width" secondItem="cSu-J6-PyD" secondAttribute="width" multiplier="19/20" id="4Oy-BQ-UDn"/>
+                                        <constraint firstItem="iuc-wJ-WEF" firstAttribute="centerY" secondItem="cSu-J6-PyD" secondAttribute="centerY" id="D6j-F1-h1U"/>
+                                        <constraint firstItem="iuc-wJ-WEF" firstAttribute="height" secondItem="cSu-J6-PyD" secondAttribute="height" multiplier="3/4" id="eQb-Ln-Djg"/>
+                                        <constraint firstItem="iuc-wJ-WEF" firstAttribute="centerX" secondItem="cSu-J6-PyD" secondAttribute="centerX" id="oMA-3T-Wbg"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="challengeNameLabel" destination="LqT-AR-d3M" id="46m-de-hXH"/>
+                                    <outlet property="completeButton" destination="CF7-3G-rVO" id="fzh-LV-BWd"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -244,10 +296,18 @@
                             <outlet property="delegate" destination="Kw0-4B-Cgf" id="bgn-HU-qMa"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="ChallengeType" id="zlg-Ms-1PS">
+                        <barButtonItem key="leftBarButtonItem" title="Back" id="5kk-zQ-Ezi">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="Kw0-4B-Cgf" id="dsf-bN-scu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c5a-UK-9fZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2047" y="767"/>
+            <point key="canvasLocation" x="2080.8000000000002" y="782.51231527093603"/>
         </scene>
         <!--Noteworthy-->
         <scene sceneID="OhP-cO-AHO">
@@ -530,7 +590,6 @@
                             <constraint firstItem="n0M-qN-DBq" firstAttribute="centerY" secondItem="qqJ-6M-hwX" secondAttribute="centerY" id="dgn-eV-jlp"/>
                             <constraint firstItem="8J2-48-m1E" firstAttribute="top" secondItem="qqJ-6M-hwX" secondAttribute="top" id="fxL-Tj-2HC"/>
                             <constraint firstItem="8J2-48-m1E" firstAttribute="centerY" secondItem="qqJ-6M-hwX" secondAttribute="centerY" id="hfH-z1-Auv"/>
-                            <constraint firstItem="n0M-qN-DBq" firstAttribute="centerX" secondItem="qqJ-6M-hwX" secondAttribute="centerX" id="kKb-xc-SH0"/>
                             <constraint firstItem="8J2-48-m1E" firstAttribute="centerX" secondItem="qqJ-6M-hwX" secondAttribute="centerX" id="kh3-ae-bKh"/>
                             <constraint firstAttribute="trailing" secondItem="HQ1-2J-UUl" secondAttribute="trailing" id="mWx-Pm-Yaq"/>
                             <constraint firstAttribute="bottom" secondItem="n0M-qN-DBq" secondAttribute="bottom" id="uWf-Cs-Bou"/>
@@ -562,8 +621,10 @@
         <image name="LaunchScreenImage" width="1280" height="720"/>
         <image name="OutdoorButton" width="122" height="122"/>
         <image name="TravelButton" width="122" height="122"/>
+        <image name="completeChallenge" width="146" height="146"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="AEc-fF-hGv"/>
+        <segue reference="0Cy-Wi-HVh"/>
     </inferredMetricsTieBreakers>
 </document>

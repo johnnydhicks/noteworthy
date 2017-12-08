@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13533" systemVersion="17B1003" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13772" systemVersion="17C88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Challenge" representedClassName="Challenge" syncable="YES" codeGenerationType="class">
+        <attribute name="isComplete" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="challengeType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChallengeType" inverseName="challenges" inverseEntity="ChallengeType" syncable="YES"/>
+    </entity>
+    <entity name="ChallengeType" representedClassName="ChallengeType" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="challenges" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Challenge" inverseName="challengeType" inverseEntity="Challenge" syncable="YES"/>
+    </entity>
     <entity name="Entry" representedClassName="Entry" syncable="YES">
         <attribute name="imageData" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="note" attributeType="String" syncable="YES"/>
@@ -9,5 +18,7 @@
     </entity>
     <elements>
         <element name="Entry" positionX="-63" positionY="-18" width="128" height="120"/>
+        <element name="Challenge" positionX="-207" positionY="171" width="128" height="90"/>
+        <element name="ChallengeType" positionX="259" positionY="351" width="128" height="73"/>
     </elements>
 </model>

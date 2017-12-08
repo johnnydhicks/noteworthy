@@ -21,6 +21,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urlCache = URLCache(memoryCapacity: 25000000, diskCapacity: 50000000, diskPath: temporaryDirectory)
         URLCache.shared = urlCache
         
+        if UserDefaults.standard.bool(forKey: "challengesHaveBeenSetUp") == false {
+            ChallengeController.shared.setupChallengeTypesAndChallenges()
+        }
+        
+        
         return true
     }
 
