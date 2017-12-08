@@ -35,15 +35,15 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
             if let entry = entry {
                 EntryController.shared.update(entry: entry, imageData: photoData, oldVideoURL: nil, note: note)
             } else {
-            
                 EntryController.shared.createEntry(imageData: photoData, oldVideoURL: nil, note: note)
             }
         } else if let movieURL = movieURL {
             guard let note = noteTextView.text else { return }
             if let entry = entry {
                 EntryController.shared.update(entry: entry, imageData: nil, oldVideoURL: movieURL, note: note)
+            } else {
+                EntryController.shared.createEntry(imageData: nil, oldVideoURL: movieURL, note: note)
             }
-            EntryController.shared.createEntry(imageData: nil, oldVideoURL: movieURL, note: note)
         }
         
         navigationController?.popViewController(animated: true)

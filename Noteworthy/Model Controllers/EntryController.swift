@@ -58,9 +58,34 @@ class EntryController {
     
     func update(entry: Entry, imageData: Data?, oldVideoURL: URL?, note: String) {
         
-        entry.imageData = imageData as NSData?
-        entry.videoURL = oldVideoURL?.absoluteString
-        entry.note = note
+        if let oldVideoURL = oldVideoURL {
+            
+            guard let videoData = try? Data(contentsOf: oldVideoURL) else { return }
+            
+            do {
+                
+                let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                let newVideoURL = directoryURL.appendingPathComponent(oldVideoURL.lastPathComponent)
+                try videoData.write(to: newVideoURL)
+                
+                
+                entry.imageData = nil
+                entry.videoURL = oldVideoURL.lastPathComponent
+                entry.note = note
+                
+//                _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+            
+        } else if let imageData = imageData {
+            entry.imageData = imageData as NSData
+            entry.videoURL = nil
+            entry.note = note
+        
+        }
+    
         saveToPersistentStore()
     }
     
