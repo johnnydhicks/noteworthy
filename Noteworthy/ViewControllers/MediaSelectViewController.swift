@@ -107,7 +107,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     // A notification is fired and seeker is sent to the beginning to loop the video again
     @objc func playerItemDidReachEnd(notification: Notification) {
         let p: AVPlayerItem = notification.object as! AVPlayerItem
-        p.seek(to: kCMTimeZero)
+        p.seek(to: kCMTimeZero, completionHandler: nil)
     }
     
     @IBAction func selectMediaButtonTapped(_ sender: Any) {

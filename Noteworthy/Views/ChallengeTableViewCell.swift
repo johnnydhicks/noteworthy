@@ -12,7 +12,9 @@ class ChallengeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var challengeNameLabel: UILabel!
     @IBOutlet weak var completeButton: UIButton!
+    @IBOutlet weak var completionDateLabel: UILabel!
     var delegate: ChallengeTableViewCellDelegate?
+    let completedFeedback = UISelectionFeedbackGenerator()
     
     var challenge: Challenge? {
         didSet{
@@ -22,14 +24,25 @@ class ChallengeTableViewCell: UITableViewCell {
     
     
     @IBAction func completeButtonTapped(_ sender: UIButton) {
-        
         delegate?.buttonCellButtonTapped(self)
         updateButton(challenge!.isComplete)
+        
+        guard let challenge = challenge,
+            let date = challenge.date else { return }
+        completionDateLabel.text = "Completed: \(dateFormatter.string(from: date))"
+        completedFeedback.selectionChanged()
     }
     
     func updateButton(_ isComplete: Bool) {
+        
         let imageName = isComplete ? "completeChallenge" : "incompleteChallenge"
         completeButton.setImage(UIImage(named: imageName), for: .normal)
+        if isComplete == false {
+            completionDateLabel.isHidden = true
+        } else {
+            completionDateLabel.isHidden = false
+        }
+        
     }
     
     override func awakeFromNib() {
@@ -42,6 +55,15 @@ class ChallengeTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // Formats the data for each entry
+    private var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
 
 }
 
@@ -50,8 +72,10 @@ extension ChallengeTableViewCell {
     func updateViews(){
         guard let challenge = self.challenge else { return }
         challengeNameLabel.text = challenge.name
-        
         updateButton(challenge.isComplete)
+        
+        guard let date = challenge.date else { return }
+        completionDateLabel.text = "Completed: \(dateFormatter.string(from: date))"
     }
 }
 

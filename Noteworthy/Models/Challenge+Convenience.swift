@@ -11,10 +11,10 @@ import CoreData
 
 extension Challenge {
     
-    @discardableResult convenience init(name: String, isComplete: Bool = false, challengeType: ChallengeType, context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(name: String, isComplete: Bool = false, date: Date? = nil, challengeType: ChallengeType, context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
-        
+        self.date = date
         self.name = name
         self.isComplete = isComplete
         self.challengeType = challengeType

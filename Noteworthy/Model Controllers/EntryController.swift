@@ -58,10 +58,12 @@ class EntryController {
     
     func update(entry: Entry, imageData: Data?, oldVideoURL: URL?, note: String) {
         
+        entry.note = note
+        
         if let oldVideoURL = oldVideoURL {
             
-            guard let videoData = try? Data(contentsOf: oldVideoURL) else { return }
-            
+            guard let videoData = try? Data(contentsOf: oldVideoURL) else { return  }
+            // When the video isn't updated, the update function never hits the do-try-catch function, and thus never updates the note
             do {
                 
                 let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
@@ -69,9 +71,9 @@ class EntryController {
                 try videoData.write(to: newVideoURL)
                 
                 
-                entry.imageData = nil
+                
                 entry.videoURL = oldVideoURL.lastPathComponent
-                entry.note = note
+
                 
 //                _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
                 
@@ -79,11 +81,10 @@ class EntryController {
                 print(error.localizedDescription)
             }
             
+            entry.imageData = nil
         } else if let imageData = imageData {
             entry.imageData = imageData as NSData
             entry.videoURL = nil
-            entry.note = note
-        
         }
     
         saveToPersistentStore()
