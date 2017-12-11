@@ -44,6 +44,7 @@ class ChallengesTableViewController: UITableViewController, ChallengeTableViewCe
 
         guard let challenge = challengeType?.challenges?.object(at: indexPath.row) as? Challenge else { return UITableViewCell() }
         cell.delegate = self
+        cell.selectionStyle = .none
         cell.challenge = challenge
         return cell
     }

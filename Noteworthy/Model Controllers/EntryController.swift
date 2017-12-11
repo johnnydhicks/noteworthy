@@ -16,7 +16,7 @@ class EntryController {
     static let shared = EntryController()
     
     var fetchedResultsController: NSFetchedResultsController<Entry>!
-
+    
     var entries: [Entry] {
         
         let request: NSFetchRequest<Entry> = Entry.fetchRequest()
@@ -41,7 +41,7 @@ class EntryController {
                 
                 _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
                 saveToPersistentStore()
-
+                
             } catch {
                 print(error.localizedDescription)
             }
@@ -50,7 +50,7 @@ class EntryController {
         } else {
             _ = Entry(imageData: imageData, videoURL: nil, note: note)
             saveToPersistentStore()
-
+            
         }
         
         
@@ -62,31 +62,32 @@ class EntryController {
         
         if let oldVideoURL = oldVideoURL {
             
-            guard let videoData = try? Data(contentsOf: oldVideoURL) else { return  }
-            // When the video isn't updated, the update function never hits the do-try-catch function, and thus never updates the note
-            do {
+            if let videoData = try? Data(contentsOf: oldVideoURL) {
+                // When the video isn't updated, the update function never hits the do-try-catch function, and thus never updates the note
+                do {
+                    
+                    let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                    let newVideoURL = directoryURL.appendingPathComponent(oldVideoURL.lastPathComponent)
+                    try videoData.write(to: newVideoURL)
+                    
+                    
+                    
+                    entry.videoURL = oldVideoURL.lastPathComponent
+                    
+                    
+                    //                _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
+                    
+                } catch {
+                    print(error.localizedDescription)
+                }
                 
-                let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-                let newVideoURL = directoryURL.appendingPathComponent(oldVideoURL.lastPathComponent)
-                try videoData.write(to: newVideoURL)
-                
-                
-                
-                entry.videoURL = oldVideoURL.lastPathComponent
-
-                
-//                _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
-                
-            } catch {
-                print(error.localizedDescription)
             }
-            
             entry.imageData = nil
         } else if let imageData = imageData {
             entry.imageData = imageData as NSData
             entry.videoURL = nil
         }
-    
+        
         saveToPersistentStore()
     }
     

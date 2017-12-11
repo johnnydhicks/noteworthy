@@ -86,7 +86,6 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
             // Set up video cell
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell else { return UITableViewCell() }
-
             cell.entry = entry
             return cell
         } else {
