@@ -15,8 +15,8 @@
         <array key="ArialRoundedMTBold.ttf">
             <string>ArialRoundedMTBold</string>
         </array>
-        <array key="TimesNewRoman.ttf">
-            <string>TimesNewRomanPSMT</string>
+        <array key="Verdana.ttf">
+            <string>Verdana</string>
         </array>
     </customFonts>
     <scenes>
@@ -349,18 +349,18 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IUJ-E7-tHQ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="403"/>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-Af-erc">
+                                        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="nzn-Af-erc">
                                             <rect key="frame" x="7.6666666666666572" y="403" width="360" height="57.666666666666686"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gam-Yd-HnN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gam-Yd-HnN">
                                                     <rect key="frame" x="0.0" y="0.0" width="360" height="26"/>
                                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
                                                     <color key="textColor" red="0.15683796999999999" green="0.40455868839999998" blue="0.76085025070000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIU-fq-NpJ">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIU-fq-NpJ">
                                                     <rect key="frame" x="0.0" y="26" width="360" height="31.666666666666671"/>
-                                                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -370,6 +370,7 @@
                                     <constraints>
                                         <constraint firstItem="IUJ-E7-tHQ" firstAttribute="height" secondItem="plS-Xx-Ydn" secondAttribute="height" multiplier="7/8" id="BiE-NT-H4Y"/>
                                         <constraint firstItem="IUJ-E7-tHQ" firstAttribute="leading" secondItem="plS-Xx-Ydn" secondAttribute="leading" id="GIc-3U-Dym"/>
+                                        <constraint firstItem="nzn-Af-erc" firstAttribute="height" secondItem="plS-Xx-Ydn" secondAttribute="height" multiplier="1/8" id="Gxc-6k-olZ"/>
                                         <constraint firstItem="6Oe-WL-KCW" firstAttribute="height" secondItem="plS-Xx-Ydn" secondAttribute="height" multiplier="5/6" id="IzG-AJ-kk3"/>
                                         <constraint firstAttribute="trailing" secondItem="6Oe-WL-KCW" secondAttribute="trailing" id="L1m-Oz-f41"/>
                                         <constraint firstItem="6Oe-WL-KCW" firstAttribute="leading" secondItem="plS-Xx-Ydn" secondAttribute="leading" id="LyU-r7-NR5"/>
@@ -378,7 +379,6 @@
                                         <constraint firstAttribute="bottom" secondItem="nzn-Af-erc" secondAttribute="bottom" id="dul-li-7Re"/>
                                         <constraint firstItem="6Oe-WL-KCW" firstAttribute="top" secondItem="plS-Xx-Ydn" secondAttribute="top" id="fmA-Lb-HYR"/>
                                         <constraint firstItem="nzn-Af-erc" firstAttribute="centerX" secondItem="plS-Xx-Ydn" secondAttribute="centerX" id="hDq-Cp-652"/>
-                                        <constraint firstItem="nzn-Af-erc" firstAttribute="top" secondItem="IUJ-E7-tHQ" secondAttribute="bottom" id="lGT-Ww-k5u"/>
                                         <constraint firstAttribute="trailing" secondItem="IUJ-E7-tHQ" secondAttribute="trailing" id="tCR-cc-XkE"/>
                                         <constraint firstItem="IUJ-E7-tHQ" firstAttribute="centerX" secondItem="plS-Xx-Ydn" secondAttribute="centerX" id="vdn-24-K9N"/>
                                         <constraint firstItem="6Oe-WL-KCW" firstAttribute="centerX" secondItem="plS-Xx-Ydn" secondAttribute="centerX" id="wgE-wa-hvM"/>
@@ -402,18 +402,18 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eo0-mS-hvY">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="384"/>
                                         </imageView>
-                                        <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qHb-vT-q2J">
+                                        <stackView opaque="NO" contentMode="scaleAspectFill" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="qHb-vT-q2J">
                                             <rect key="frame" x="7.6666666666666572" y="384" width="360" height="76.666666666666686"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-sE-5Rj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="34.666666666666664"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiE-sE-5Rj">
+                                                    <rect key="frame" x="0.0" y="0.0" width="360" height="34.333333333333336"/>
                                                     <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
                                                     <color key="textColor" red="0.15683796999999999" green="0.40455868839999998" blue="0.76085025070000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmN-Cf-gxT">
-                                                    <rect key="frame" x="0.0" y="34.666666666666686" width="360" height="42"/>
-                                                    <fontDescription key="fontDescription" name="TimesNewRomanPSMT" family="Times New Roman" pointSize="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qmN-Cf-gxT">
+                                                    <rect key="frame" x="0.0" y="34.333333333333314" width="360" height="42.333333333333343"/>
+                                                    <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="13"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -476,7 +476,7 @@
                                 <rect key="frame" x="0.0" y="493.99999999999994" width="375" height="162.33333333333331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
