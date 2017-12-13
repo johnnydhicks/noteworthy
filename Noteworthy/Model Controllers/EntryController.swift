@@ -23,7 +23,7 @@ class EntryController {
         
         let results = (try? CoreDataStack.context.fetch(request)) ?? []
         
-        return results.sorted(by: { $0.timestamp.timeIntervalSince1970 < $1.timestamp.timeIntervalSince1970 })
+        return results.sorted(by: { $0.timestamp.timeIntervalSince1970 > $1.timestamp.timeIntervalSince1970 })
     }
     
     // CRUD Functions
@@ -221,6 +221,7 @@ class EntryController {
             guard let record = record else { return }
             unsavedObjectsByRecord[record]?.cloudKitRecordID = record.recordID
             
+            self.saveToPersistentStore()
         }) { (records, error) in
             
             let success = records != nil

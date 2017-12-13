@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Model Controllers/EntryController.swift"
-            timestampString = "534893427.514501"
+            timestampString = "534895912.043056"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/Model Controllers/EntryController.swift"
-            timestampString = "534893427.514914"
+            timestampString = "534895912.043548"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
@@ -65,6 +65,38 @@
             endingLineNumber = "57"
             landmarkName = "init(record:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Noteworthy):__ObjC.CKRecord.init(Noteworthy.Entry) -&gt; __ObjC.CKRecord"
+                  moduleName = "Noteworthy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johnnyhicks/Desktop/DevMountain/DevMountain%20Projects/Unit%206/Noteworthy/Noteworthy/Models/Entry+CoreDataClass.swift"
+                  timestampString = "534895234.868644"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(extension in Noteworthy):__ObjC.CKRecord.init(Noteworthy.Entry) -&gt; __ObjC.CKRecord"
+                  moduleName = "Noteworthy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johnnyhicks/Desktop/DevMountain/DevMountain%20Projects/Unit%206/Noteworthy/Noteworthy/Models/Entry+CoreDataClass.swift"
+                  timestampString = "534895234.87098"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "62"
+                  endingLineNumber = "62"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -112,6 +144,22 @@
             startingLineNumber = "30"
             endingLineNumber = "30"
             landmarkName = "init(imageData:videoURL:note:timestamp:context:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Noteworthy/Model Controllers/EntryController.swift"
+            timestampString = "534895945.43159"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "fetchNewRecordsOf(type:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
