@@ -22,7 +22,6 @@ class ChallengeTableViewCell: UITableViewCell {
         }
     }
     
-    
     @IBAction func completeButtonTapped(_ sender: UIButton) {
         delegate?.buttonCellButtonTapped(self)
         updateButton(challenge!.isComplete)
@@ -34,7 +33,6 @@ class ChallengeTableViewCell: UITableViewCell {
     }
     
     func updateButton(_ isComplete: Bool) {
-        
         let imageName = isComplete ? "completeChallenge" : "incompleteChallenge"
         completeButton.setImage(UIImage(named: imageName), for: .normal)
         if isComplete == false {
@@ -52,8 +50,6 @@ class ChallengeTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     // Formats the data for each entry

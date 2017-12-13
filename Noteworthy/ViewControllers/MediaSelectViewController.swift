@@ -35,7 +35,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         }
     }
     
-    
     // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()

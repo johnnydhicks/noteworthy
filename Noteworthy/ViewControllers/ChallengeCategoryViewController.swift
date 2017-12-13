@@ -20,26 +20,15 @@ class ChallengeCategoryViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    
-    
-    
     // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toOutdoorChallenges" {
-            // Get the right challengeType
-            
+    
             guard let challengeType = ChallengeController.shared.challengeTypes.filter({$0.name == "Outdoor"}).first,
                 let challengeVC = segue.destination as? ChallengesTableViewController else { return }
             
-            
-            
             challengeVC.challengeType = challengeType
-            
             
         } else if segue.identifier == "toFitnessChallenges" {
             

@@ -14,7 +14,6 @@
 		38226EDE1FDAF32C00C10C8F /* Challenge+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EDD1FDAF32C00C10C8F /* Challenge+Convenience.swift */; };
 		38226EE21FDAF6EF00C10C8F /* ChallengeType+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE11FDAF6EF00C10C8F /* ChallengeType+Convenience.swift */; };
 		38226EE41FDAF87E00C10C8F /* ChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE31FDAF87E00C10C8F /* ChallengeController.swift */; };
-		38226EE61FDAF9AF00C10C8F /* ChallengeTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE51FDAF9AF00C10C8F /* ChallengeTypeController.swift */; };
 		38226EE81FDB09AE00C10C8F /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE71FDB09AE00C10C8F /* ChallengesTableViewController.swift */; };
 		38226EEA1FDB16CF00C10C8F /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE91FDB16CF00C10C8F /* ChallengeTableViewCell.swift */; };
 		3850AA101FD5B95E0057D125 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */; };
@@ -43,7 +42,6 @@
 		38226EDD1FDAF32C00C10C8F /* Challenge+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+Convenience.swift"; sourceTree = "<group>"; };
 		38226EE11FDAF6EF00C10C8F /* ChallengeType+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeType+Convenience.swift"; sourceTree = "<group>"; };
 		38226EE31FDAF87E00C10C8F /* ChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeController.swift; sourceTree = "<group>"; };
-		38226EE51FDAF9AF00C10C8F /* ChallengeTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTypeController.swift; sourceTree = "<group>"; };
 		38226EE71FDB09AE00C10C8F /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
 		38226EE91FDB16CF00C10C8F /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
 		3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 			children = (
 				3850AA1C1FD5CCC70057D125 /* EntryController.swift */,
 				38226EE31FDAF87E00C10C8F /* ChallengeController.swift */,
-				38226EE51FDAF9AF00C10C8F /* ChallengeTypeController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -261,7 +258,6 @@
 				3850AA231FD5D6EC0057D125 /* EntryTableViewCell.swift in Sources */,
 				38226EE81FDB09AE00C10C8F /* ChallengesTableViewController.swift in Sources */,
 				3850AA1F1FD5D5270057D125 /* TimeLineTableViewController.swift in Sources */,
-				38226EE61FDAF9AF00C10C8F /* ChallengeTypeController.swift in Sources */,
 				3850AA151FD5C0DA0057D125 /* CoreDataStack.swift in Sources */,
 				3850AA101FD5B95E0057D125 /* CloudKitSyncable.swift in Sources */,
 				3850AA251FD5E83C0057D125 /* Theme.swift in Sources */,

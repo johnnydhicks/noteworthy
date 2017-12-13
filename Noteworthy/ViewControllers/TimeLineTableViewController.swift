@@ -26,9 +26,9 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         return frc
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.rowHeight = 400.0
         
         let sess = AVAudioSession.sharedInstance()
@@ -36,7 +36,6 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
             _ = try? sess.setCategory(AVAudioSessionCategoryAmbient, with: .duckOthers)
             _ = try? sess.setActive(true, with: [])
         }
-        
         
         do {
             try fetchedResultsController.performFetch()
@@ -46,28 +45,13 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-
-//        for cell in tableView.visibleCells {
-//        // Cast the cell as custom cell
-//            let cell = cell as? EntryTableViewCell
-//            // Call play function
-//            cell?.avPlayer?.play()
-//        }
-        
-        
-        tableView.reloadData()
-    }
-
-
     // MARK: - Table view data source
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections, sections.count > section else { return 0 }
         return sections[section].numberOfObjects
     }
-
+    
     override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? EntryTableViewCell else { return }
         cell.avPlayer?.pause()
@@ -78,9 +62,6 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         cell.avPlayer?.play()
     }
     
-
-    
-
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let entries = fetchedResultsController.fetchedObjects else { return EntryTableViewCell() }
         let entry = entries[indexPath.row]
@@ -89,22 +70,21 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
             
             // Set up photo cell
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryPhotoCell", for: indexPath) as? EntryWithPhotoTableViewCell else { return UITableViewCell() }
-            
             cell.entry = entry
             return cell
-        } else if entry.videoURL != nil {
-            // Set up video cell
             
+        } else if entry.videoURL != nil {
+            
+            // Set up video cell
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "entryCell", for: indexPath) as? EntryTableViewCell else { return UITableViewCell() }
             cell.entry = entry
             return cell
+            
         } else {
             return UITableViewCell()
         }
     }
- 
-
-
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -115,19 +95,12 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         }
     }
     
-//    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-//        tableView.reloadData()
-//    }
-
-
-
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toEditEntry" || segue.identifier == "toAddEditEntry" {
             if let detailVC = segue.destination as? AddEditEntryViewController,
                 let selectedRow = tableView.indexPathForSelectedRow?.row {
-                
                 let entry = EntryController.shared.entries[selectedRow]
                 detailVC.entry = entry
             }

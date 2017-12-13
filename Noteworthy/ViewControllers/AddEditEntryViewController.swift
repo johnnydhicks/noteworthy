@@ -45,27 +45,24 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
                 EntryController.shared.createEntry(imageData: nil, oldVideoURL: movieURL, note: note)
             }
         }
-        
         navigationController?.popViewController(animated: true)
     }
     
     func setUpAlertController() {
-    let alertController = UIAlertController(title: "Missing Video/Image", message: "To save the entry, please select an image or video", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Missing Video/Image", message: "To save the entry, please select an image or video", preferredStyle: .alert)
         let okAlert = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(okAlert)
         
         present(alertController, animated: true)
-    
     }
-
+    
     // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.primaryAppBlue
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-        
+    
         updateViews()
         
         noteTextView.delegate = self
@@ -82,7 +79,6 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     func textViewDidChange(_ textView: UITextView) {
         placeholderLabel.isHidden = !textView.text.isEmpty
     }
-
     
     private func updateViews() {
         guard let entry = entry else { return }
@@ -114,10 +110,8 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
         return true
     }
     
-
-
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toContainerView" {
             guard let destinationVC = segue.destination as? MediaSelectViewController else { return }

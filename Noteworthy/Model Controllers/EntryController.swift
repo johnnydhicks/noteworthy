@@ -45,15 +45,10 @@ class EntryController {
             } catch {
                 print(error.localizedDescription)
             }
-            
-            
         } else {
             _ = Entry(imageData: imageData, videoURL: nil, note: note)
             saveToPersistentStore()
-            
         }
-        
-        
     }
     
     func update(entry: Entry, imageData: Data?, oldVideoURL: URL?, note: String) {
@@ -63,31 +58,22 @@ class EntryController {
         if let oldVideoURL = oldVideoURL {
             
             if let videoData = try? Data(contentsOf: oldVideoURL) {
-                // When the video isn't updated, the update function never hits the do-try-catch function, and thus never updates the note
                 do {
-                    
                     let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
                     let newVideoURL = directoryURL.appendingPathComponent(oldVideoURL.lastPathComponent)
                     try videoData.write(to: newVideoURL)
-                    
-                    
-                    
                     entry.videoURL = oldVideoURL.lastPathComponent
-                    
-                    
-                    //                _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
-                    
                 } catch {
                     print(error.localizedDescription)
                 }
-                
             }
+            
             entry.imageData = nil
+            
         } else if let imageData = imageData {
             entry.imageData = imageData as NSData
             entry.videoURL = nil
         }
-        
         saveToPersistentStore()
     }
     
@@ -98,7 +84,6 @@ class EntryController {
         
         saveToPersistentStore()
     }
-    
     
     // Save Entries
     func saveToPersistentStore() {

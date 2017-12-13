@@ -13,9 +13,6 @@ class ChallengeController: NSObject, NSFetchedResultsControllerDelegate {
     
     static let shared = ChallengeController()
         
-    
-    
-    
     var challengeTypes: [ChallengeType] {
         
         let fetchrequest: NSFetchRequest<ChallengeType> = ChallengeType.fetchRequest()

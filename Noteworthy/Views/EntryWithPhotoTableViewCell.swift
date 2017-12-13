@@ -25,12 +25,6 @@ class EntryWithPhotoTableViewCell: UITableViewCell {
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var noteLabel: UILabel!
-    
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
@@ -51,8 +45,6 @@ class EntryWithPhotoTableViewCell: UITableViewCell {
         
         dateLabel.text = dateFormatter.string(from: entry.timestamp as Date)
         noteLabel.text = entry.note
-        
-        
         if let imageData = entry.imageData {
             photoImageView.image = UIImage(data: imageData as Data)
             photoImageView.contentMode = UIViewContentMode.scaleAspectFill
@@ -68,5 +60,4 @@ class EntryWithPhotoTableViewCell: UITableViewCell {
             formatter.doesRelativeDateFormatting = true
             return formatter
         }()
-
 }
