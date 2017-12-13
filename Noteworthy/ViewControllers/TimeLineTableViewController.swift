@@ -46,11 +46,19 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(true)
-//
-//        tableView.reloadData()
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+
+//        for cell in tableView.visibleCells {
+//        // Cast the cell as custom cell
+//            let cell = cell as? EntryTableViewCell
+//            // Call play function
+//            cell?.avPlayer?.play()
+//        }
+        
+        
+        tableView.reloadData()
+    }
 
 
     // MARK: - Table view data source
@@ -69,6 +77,8 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         guard let cell = cell as? EntryTableViewCell else { return }
         cell.avPlayer?.play()
     }
+    
+
     
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
