@@ -26,6 +26,7 @@ class ChallengesTableViewController: UITableViewController, ChallengeTableViewCe
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationItem.title = challengeType?.name
     }
     
     var challengeType: ChallengeType?
