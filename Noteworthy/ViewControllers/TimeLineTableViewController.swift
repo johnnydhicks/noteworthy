@@ -42,7 +42,13 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         } catch let error as NSError {
             NSLog("Error performing fetch on NSFetchedResultsController: \(error)")
         }
-        
+
+//        EntryController.shared.saveAllEntriesToCloudKit()
+        EntryController.shared.performFullSync() {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -105,6 +111,14 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
                 detailVC.entry = entry
             }
         }
+    }
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,

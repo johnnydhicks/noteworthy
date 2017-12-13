@@ -81,7 +81,7 @@ class EntryTableViewCell: UITableViewCell {
         if let videoURLString = entry.videoURL,
             let videoURL = URL(string: videoURLString) {
             setupMoviePlayer()
-            let finalVideoURL = createVideoURL(url: videoURL)!
+            let finalVideoURL = videoURL.createVideoURL()!
             videoPlayerItem = AVPlayerItem(url: finalVideoURL)
             print("-----> \(finalVideoURL)")
             let fm = FileManager.default
@@ -91,16 +91,7 @@ class EntryTableViewCell: UITableViewCell {
     }
     
     // Creating video URL to be referenced in core data
-    func createVideoURL(url: URL) -> URL? {
-        do {
-            let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-            let finalDirectory = directoryURL.appendingPathComponent(url.path)
-            return finalDirectory
-        } catch let e {
-            print("Error getting docs directory \(e)")
-        }
-        return nil
-    }
+
     
     // Formats the data for each entry
     private var dateFormatter: DateFormatter = {

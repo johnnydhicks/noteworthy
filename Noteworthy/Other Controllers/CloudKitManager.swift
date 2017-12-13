@@ -17,10 +17,12 @@ private let ModificationDateKey = "modificationDate"
 
 class CloudKitManager {
     
-    let publicDatabase = CKContainer.default().publicCloudDatabase
-    let privateDatabase = CKContainer.default().privateCloudDatabase
-    
+    let publicDatabase: CKDatabase!
+    let privateDatabase: CKDatabase!
+//    let shared = CloudKitManager()
     init() {
+        publicDatabase = CKContainer.default().publicCloudDatabase
+        privateDatabase = CKContainer.default().privateCloudDatabase
         checkCloudKitAvailability()
     }
     

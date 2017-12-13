@@ -23,7 +23,7 @@ class EntryController {
         
         let results = (try? CoreDataStack.context.fetch(request)) ?? []
         
-        return results.sorted(by: { $0.timestamp.timeIntervalSince1970 > $1.timestamp.timeIntervalSince1970 })
+        return results.sorted(by: { $0.timestamp.timeIntervalSince1970 < $1.timestamp.timeIntervalSince1970 })
     }
     
     // CRUD Functions
@@ -47,6 +47,7 @@ class EntryController {
             }
         } else {
             _ = Entry(imageData: imageData, videoURL: nil, note: note)
+            performFullSync()
             saveToPersistentStore()
         }
     }
@@ -75,6 +76,7 @@ class EntryController {
             entry.videoURL = nil
         }
         saveToPersistentStore()
+        performFullSync()
     }
     
     func delete(entry: Entry) {
@@ -83,6 +85,7 @@ class EntryController {
         moc.delete(entry)
         
         saveToPersistentStore()
+        performFullSync()
     }
     
     // Save Entries
@@ -92,6 +95,136 @@ class EntryController {
             try moc.save()
         } catch let error {
             print("There was a problem saving to persistent store: \(error)")
+        }
+    }
+    
+    
+    // Helper Fetches
+    private func recordsOf(type: String) -> [CloudKitSyncable] {
+        switch type {
+        case "Entry":
+            return entries.flatMap { $0 as CloudKitSyncable }
+        default:
+            return []
+        }
+    }
+    
+    func syncedRecordsOf(type: String) -> [CloudKitSyncable] {
+        return recordsOf(type: type).filter { $0.isSynced }
+    }
+    
+    func unsyncedRecordsOf(type: String) -> [CloudKitSyncable] {
+        return recordsOf(type: type).filter { !$0.isSynced }
+    }
+    
+    
+    
+    let cloudKitManager = CloudKitManager()
+    
+    // MARK - Sync
+    func performFullSync(completion: @escaping (() -> Void) = {  }) {
+        
+        pushChangesToCloudKit { (success, error) in
+            
+            self.fetchNewRecordsOf(type: Entry.typeKey)
+        
+        }
+        
+       
+    }
+    
+    func fetchAllEntries(completion: @escaping () -> Void) {
+        
+        cloudKitManager.fetchRecordsWithType("Entry") { (records, error) in
+            guard let records = records else { return }
+            
+            DispatchQueue.main.async {
+                _ = records.flatMap({Entry(record: $0)})
+                self.saveToPersistentStore()
+                completion()
+            }
+        }
+        
+    }
+
+    func saveAllEntriesToCloudKit() {
+        
+        var entryRecords: [CKRecord] = []
+        
+        for entry in entries {
+            let entryRecord = CKRecord(entry)
+            entryRecords.append(entryRecord)
+        }
+        
+        cloudKitManager.modifyRecords(entryRecords, perRecordCompletion: nil) { (_, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
+    
+    func fetchNewRecordsOf(type: String, completion: @escaping (() -> Void) = {  }) {
+        
+        var referencesToExclude = [CKReference]()
+        var predicate: NSPredicate!
+        referencesToExclude = self.syncedRecordsOf(type: type).flatMap { $0.cloudKitReference }
+        predicate = NSPredicate(format: "NOT(recordID IN %@)", argumentArray: [referencesToExclude])
+        
+        if referencesToExclude.isEmpty {
+            predicate = NSPredicate(value: true)
+        }
+        
+        let sortDescriptors: [NSSortDescriptor]?
+        switch type {
+        case Entry.typeKey:
+            let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+            sortDescriptors = [sortDescriptor]
+        default:
+            sortDescriptors = nil
+        }
+        
+        cloudKitManager.fetchRecordsWithType(type, predicate: predicate, sortDescriptors: sortDescriptors) { (records, error) in
+            
+            defer { completion() }
+            if let error = error {
+                NSLog("Error fetching CloudKit records of type \(type): \(error)")
+                return
+            }
+            guard let records = records else { return }
+            
+            switch type {
+            case Entry.typeKey:
+                let _ = records.flatMap { Entry(record: $0) }
+
+                self.saveToPersistentStore()
+            default:
+                return
+            }
+        }
+    }
+    
+    
+    func pushChangesToCloudKit(completion: @escaping ((_ success: Bool, _ error: Error?) -> Void) = { _,_ in }) {
+        
+        let unsavedPosts = unsyncedRecordsOf(type: Entry.typeKey) as? [Entry] ?? []
+        var unsavedObjectsByRecord = [CKRecord: CloudKitSyncable]()
+        for post in unsavedPosts {
+            let record = CKRecord(post)
+            unsavedObjectsByRecord[record] = post
+        }
+        
+        let unsavedRecords = Array(unsavedObjectsByRecord.keys)
+        
+        cloudKitManager.saveRecords(unsavedRecords, perRecordCompletion: { (record, error) in
+            
+            guard let record = record else { return }
+            unsavedObjectsByRecord[record]?.cloudKitRecordID = record.recordID
+            
+        }) { (records, error) in
+            
+            let success = records != nil
+            completion(success, error)
         }
     }
 }

@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             ChallengeController.shared.setupChallengeTypesAndChallenges()
         }
         
+        EntryController.shared.performFullSync()
         
         return true
     }

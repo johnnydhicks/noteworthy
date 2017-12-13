@@ -11,6 +11,7 @@
 		380E993C1F9EEF1A0059E0C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380E993A1F9EEF1A0059E0C4 /* Main.storyboard */; };
 		380E99411F9EEF1A0059E0C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380E99401F9EEF1A0059E0C4 /* Assets.xcassets */; };
 		380E99441F9EEF1A0059E0C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380E99421F9EEF1A0059E0C4 /* LaunchScreen.storyboard */; };
+		381C59FA1FE1A1D40035C01C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 381C59F91FE1A1D40035C01C /* CloudKit.framework */; };
 		38226EDE1FDAF32C00C10C8F /* Challenge+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EDD1FDAF32C00C10C8F /* Challenge+Convenience.swift */; };
 		38226EE21FDAF6EF00C10C8F /* ChallengeType+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE11FDAF6EF00C10C8F /* ChallengeType+Convenience.swift */; };
 		38226EE41FDAF87E00C10C8F /* ChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE31FDAF87E00C10C8F /* ChallengeController.swift */; };
@@ -30,6 +31,7 @@
 		3878AAB41FD9DF2C00C18C56 /* EntryWithPhotoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3878AAB31FD9DF2C00C18C56 /* EntryWithPhotoTableViewCell.swift */; };
 		3878AAB61FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3878AAB51FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift */; };
 		389E019A1FD0C72E00F18ECE /* CloudKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 389E01991FD0C72E00F18ECE /* CloudKitManager.swift */; };
+		38EED2A81FE19C76009A70B1 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38EED2A71FE19C76009A70B1 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,7 @@
 		380E99401F9EEF1A0059E0C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		380E99431F9EEF1A0059E0C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		380E99451F9EEF1A0059E0C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		381C59F91FE1A1D40035C01C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		38226EDD1FDAF32C00C10C8F /* Challenge+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+Convenience.swift"; sourceTree = "<group>"; };
 		38226EE11FDAF6EF00C10C8F /* ChallengeType+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeType+Convenience.swift"; sourceTree = "<group>"; };
 		38226EE31FDAF87E00C10C8F /* ChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeController.swift; sourceTree = "<group>"; };
@@ -59,6 +62,7 @@
 		3878AAB51FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeCategoryViewController.swift; sourceTree = "<group>"; };
 		388A1BA81FCE13BD0005719E /* Noteworthy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Noteworthy.entitlements; sourceTree = "<group>"; };
 		389E01991FD0C72E00F18ECE /* CloudKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitManager.swift; sourceTree = "<group>"; };
+		38EED2A71FE19C76009A70B1 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				381C59FA1FE1A1D40035C01C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +82,7 @@
 			children = (
 				380E99351F9EEF1A0059E0C4 /* Noteworthy */,
 				380E99341F9EEF1A0059E0C4 /* Products */,
+				381C59F81FE1A1D40035C01C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +108,14 @@
 				388A1BA81FCE13BD0005719E /* Noteworthy.entitlements */,
 			);
 			path = Noteworthy;
+			sourceTree = "<group>";
+		};
+		381C59F81FE1A1D40035C01C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				381C59F91FE1A1D40035C01C /* CloudKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3850AA0E1FD5B93E0057D125 /* Protocols */ = {
@@ -161,6 +175,7 @@
 		388A1BAD1FCE14050005719E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				38EED2A71FE19C76009A70B1 /* Extensions.swift */,
 				380E99401F9EEF1A0059E0C4 /* Assets.xcassets */,
 				380E99361F9EEF1A0059E0C4 /* AppDelegate.swift */,
 				3850AA241FD5E83C0057D125 /* Theme.swift */,
@@ -210,6 +225,9 @@
 						CreatedOnToolsVersion = 9.0.1;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
 							com.apple.iCloud = {
 								enabled = 1;
 							};
@@ -266,6 +284,7 @@
 				38226EE21FDAF6EF00C10C8F /* ChallengeType+Convenience.swift in Sources */,
 				38226EEA1FDB16CF00C10C8F /* ChallengeTableViewCell.swift in Sources */,
 				38226EDE1FDAF32C00C10C8F /* Challenge+Convenience.swift in Sources */,
+				38EED2A81FE19C76009A70B1 /* Extensions.swift in Sources */,
 				3850AA1B1FD5C3F90057D125 /* Entry+CoreDataProperties.swift in Sources */,
 				3850AA1A1FD5C3F90057D125 /* Entry+CoreDataClass.swift in Sources */,
 				3850AA211FD5D5620057D125 /* AddEditEntryViewController.swift in Sources */,
