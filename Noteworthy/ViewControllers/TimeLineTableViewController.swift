@@ -16,6 +16,7 @@ class TimeLineTableViewController: UIViewController, UITableViewDataSource, UITa
     var avPlayerLayer: AVPlayerLayer!
     var paused: Bool = false
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noEntryView: UIView!
     
     lazy var fetchedResultsController: NSFetchedResultsController<Entry> = {
         let context = CoreDataStack.context
@@ -45,6 +46,18 @@ class TimeLineTableViewController: UIViewController, UITableViewDataSource, UITa
             NSLog("Error performing fetch on NSFetchedResultsController: \(error)")
         }
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let count = fetchedResultsController.fetchedObjects?.count else { return }
+        if count > 0 {
+            
+            DispatchQueue.main.async {
+                self.noEntryView.removeFromSuperview()
+            }
+        }
     }
     
     // MARK: - Table view data source

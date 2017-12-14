@@ -449,8 +449,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1RX-tt-e8g">
+                                <rect key="frame" x="0.0" y="88" width="375" height="641"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To add your first entry, tap the + button above" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DVc-Ob-hZh">
+                                        <rect key="frame" x="8" y="8" width="359" height="625"/>
+                                        <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="35"/>
+                                        <color key="textColor" red="0.25427883863449097" green="0.48988103866577148" blue="0.78437358140945435" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="DVc-Ob-hZh" firstAttribute="top" secondItem="1RX-tt-e8g" secondAttribute="topMargin" id="Hdz-ZY-Jh4"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="DVc-Ob-hZh" secondAttribute="bottom" id="ZOo-Fa-jNL"/>
+                                    <constraint firstItem="DVc-Ob-hZh" firstAttribute="leading" secondItem="1RX-tt-e8g" secondAttribute="leadingMargin" id="mZG-bq-jVe"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="DVc-Ob-hZh" secondAttribute="trailing" id="tPs-Gp-HcV"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="qzz-RC-Dxs" firstAttribute="bottom" secondItem="1RX-tt-e8g" secondAttribute="bottom" id="KmR-Cd-eHD"/>
+                            <constraint firstItem="1RX-tt-e8g" firstAttribute="top" secondItem="qzz-RC-Dxs" secondAttribute="top" id="Sdi-Ol-Q6n"/>
+                            <constraint firstItem="1RX-tt-e8g" firstAttribute="leading" secondItem="qzz-RC-Dxs" secondAttribute="leading" id="xaW-Pt-3im"/>
+                            <constraint firstItem="qzz-RC-Dxs" firstAttribute="trailing" secondItem="1RX-tt-e8g" secondAttribute="trailing" id="yW6-li-RHJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qzz-RC-Dxs"/>
                     </view>
                     <navigationItem key="navigationItem" title="Noteworthy" id="Xx2-m8-xKe">
@@ -461,6 +485,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="noEntryView" destination="1RX-tt-e8g" id="haQ-Uh-f2M"/>
                         <outlet property="tableView" destination="7Wi-Jc-Jnr" id="rFc-qz-mKz"/>
                     </connections>
                 </viewController>
