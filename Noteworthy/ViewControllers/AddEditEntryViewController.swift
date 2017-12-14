@@ -17,6 +17,7 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     var placeholderLabel: UILabel!
     
     @IBOutlet weak var noteTextView: UITextView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     // MARK: - ACTIONS
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -83,6 +84,7 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     private func updateViews() {
         guard let entry = entry else { return }
         noteTextView.text = entry.note
+        dateLabel.text = dateFormatter.string(from: entry.timestamp as Date)
         
         if let imageData = entry.imageData {
             image = UIImage(data: imageData as Data)
@@ -138,4 +140,12 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
             }
         }
     }
+    
+    private var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
 }

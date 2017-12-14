@@ -104,8 +104,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func selectMediaButtonTapped(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
         
         let alertController = UIAlertController(title: "Select Media Location", message: nil, preferredStyle: .actionSheet)
         
@@ -120,36 +118,39 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
                         self.authorizationStatus = status
                         
                         if self.authorizationStatus == .authorized {
-                            imagePicker.sourceType = .photoLibrary
-                            imagePicker.allowsEditing = true
-                            imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-                            imagePicker.videoMaximumDuration = 30
-                            DispatchQueue.main.async {
-                                self.present(imagePicker, animated: true, completion: nil)
-                            }
+                            self.showImagePickerFor(sourceType: .photoLibrary)
                         }
                     })
+                } else if PHPhotoLibrary.authorizationStatus() == .authorized {
+                    self.showImagePickerFor(sourceType: .photoLibrary)
                 }
-                
-                
             }))
-            
         }
         
         // Configuration for adding a photo from using the Camera
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
-                imagePicker.sourceType = .camera
-                imagePicker.cameraCaptureMode = .photo
-                imagePicker.modalPresentationStyle = .popover
-                imagePicker.allowsEditing = true
-                self.present(imagePicker, animated: true, completion: nil)
+                self.showImagePickerFor(sourceType: .camera)
             }))
         }
         
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         
         present(alertController, animated: true, completion: nil)
+    }
+    
+    func showImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
+        imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+        imagePicker.videoMaximumDuration = 30
+        DispatchQueue.main.async {
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {

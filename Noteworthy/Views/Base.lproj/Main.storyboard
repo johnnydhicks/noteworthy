@@ -348,7 +348,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="entryCell" rowHeight="408" id="kjK-mD-tdp" customClass="EntryTableViewCell" customModule="Noteworthy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="entryCell" rowHeight="408" id="kjK-mD-tdp" customClass="EntryTableViewCell" customModule="Noteworthy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="408"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kjK-mD-tdp" id="n1O-3Q-fMl">
@@ -402,7 +402,7 @@
                                             <segue destination="pcZ-R4-7qX" kind="show" identifier="toEditEntry" id="4xV-Gt-aUI"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="entryPhotoCell" rowHeight="461" id="OeO-dS-HgX" customClass="EntryWithPhotoTableViewCell" customModule="Noteworthy" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="entryPhotoCell" rowHeight="461" id="OeO-dS-HgX" customClass="EntryWithPhotoTableViewCell" customModule="Noteworthy" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="436" width="414" height="461"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OeO-dS-HgX" id="6cT-QW-uQY">
@@ -507,8 +507,14 @@
                                     <segue destination="iZ0-sM-aKh" kind="embed" identifier="toContainerView" id="Oeg-oy-v9F"/>
                                 </connections>
                             </containerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0EF-sT-X5m">
+                                <rect key="frame" x="7" y="434" width="400" height="16.333333333333314"/>
+                                <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
+                                <color key="textColor" red="0.15683796999999999" green="0.40455868839999998" blue="0.76085025070000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aAM-O4-ojc">
-                                <rect key="frame" x="0.0" y="432" width="414" height="147.33333333333337"/>
+                                <rect key="frame" x="7" y="450.99999999999994" width="400" height="147.33333333333331"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="14"/>
@@ -517,14 +523,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="aAM-O4-ojc" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" id="1Ie-7f-6fB"/>
+                            <constraint firstItem="aAM-O4-ojc" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" multiplier="29/30" id="1Ie-7f-6fB"/>
+                            <constraint firstItem="0EF-sT-X5m" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" multiplier="29/30" id="8mb-K9-CTn"/>
+                            <constraint firstItem="aAM-O4-ojc" firstAttribute="top" secondItem="kFp-IB-4xP" secondAttribute="bottom" constant="19" id="AAK-cW-DAA"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="width" secondItem="0Me-C6-ojo" secondAttribute="width" id="Cxo-Aj-V3U"/>
+                            <constraint firstItem="0EF-sT-X5m" firstAttribute="centerX" secondItem="0Me-C6-ojo" secondAttribute="centerX" id="NPh-n0-cmI"/>
+                            <constraint firstItem="0EF-sT-X5m" firstAttribute="top" secondItem="kFp-IB-4xP" secondAttribute="bottom" constant="2" id="ZS5-mS-SfW"/>
                             <constraint firstItem="aAM-O4-ojc" firstAttribute="height" secondItem="0Me-C6-ojo" secondAttribute="height" multiplier="1/5" id="b52-gE-ESa"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="top" secondItem="YYt-7B-vgp" secondAttribute="top" id="dG5-Bh-eqL"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="height" secondItem="0Me-C6-ojo" secondAttribute="height" multiplier="1/2" id="qxD-Im-vby"/>
                             <constraint firstItem="kFp-IB-4xP" firstAttribute="centerX" secondItem="YYt-7B-vgp" secondAttribute="centerX" id="rhi-Rd-gXZ"/>
                             <constraint firstItem="aAM-O4-ojc" firstAttribute="centerX" secondItem="kFp-IB-4xP" secondAttribute="centerX" id="tCA-4E-tjP"/>
-                            <constraint firstItem="aAM-O4-ojc" firstAttribute="top" secondItem="kFp-IB-4xP" secondAttribute="bottom" id="uRu-Tx-yYY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YYt-7B-vgp"/>
                     </view>
@@ -541,6 +550,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="dateLabel" destination="0EF-sT-X5m" id="nWJ-DY-A2b"/>
                         <outlet property="noteTextView" destination="aAM-O4-ojc" id="Thb-EN-Mu8"/>
                     </connections>
                 </viewController>
@@ -613,7 +623,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8J2-48-m1E">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8J2-48-m1E">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="368"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n0M-qN-DBq">

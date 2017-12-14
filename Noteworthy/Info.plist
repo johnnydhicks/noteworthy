@@ -21,9 +21,9 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-	<string>Noteworthy would like to access your camera</string>
+	<string>To create an entry using your camera, you must give Noteworthy access</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Noteworthy would like to access your photos</string>
+	<string>Noteworthy needs access to your photos before you can create an entry</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
