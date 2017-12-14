@@ -11,6 +11,7 @@
 		380E993C1F9EEF1A0059E0C4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380E993A1F9EEF1A0059E0C4 /* Main.storyboard */; };
 		380E99411F9EEF1A0059E0C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 380E99401F9EEF1A0059E0C4 /* Assets.xcassets */; };
 		380E99441F9EEF1A0059E0C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 380E99421F9EEF1A0059E0C4 /* LaunchScreen.storyboard */; };
+		3816E4371FE3309D00A41B01 /* ShiftableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3816E4361FE3309D00A41B01 /* ShiftableViewController.swift */; };
 		38226EDE1FDAF32C00C10C8F /* Challenge+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EDD1FDAF32C00C10C8F /* Challenge+Convenience.swift */; };
 		38226EE21FDAF6EF00C10C8F /* ChallengeType+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE11FDAF6EF00C10C8F /* ChallengeType+Convenience.swift */; };
 		38226EE41FDAF87E00C10C8F /* ChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE31FDAF87E00C10C8F /* ChallengeController.swift */; };
@@ -39,6 +40,7 @@
 		380E99401F9EEF1A0059E0C4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		380E99431F9EEF1A0059E0C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		380E99451F9EEF1A0059E0C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3816E4361FE3309D00A41B01 /* ShiftableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShiftableViewController.swift; sourceTree = "<group>"; };
 		38226EDD1FDAF32C00C10C8F /* Challenge+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Challenge+Convenience.swift"; sourceTree = "<group>"; };
 		38226EE11FDAF6EF00C10C8F /* ChallengeType+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChallengeType+Convenience.swift"; sourceTree = "<group>"; };
 		38226EE31FDAF87E00C10C8F /* ChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeController.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				3850AA1E1FD5D5270057D125 /* TimeLineTableViewController.swift */,
 				3850AA201FD5D5620057D125 /* AddEditEntryViewController.swift */,
 				3850AA261FD5FF5F0057D125 /* MediaSelectViewController.swift */,
+				3816E4361FE3309D00A41B01 /* ShiftableViewController.swift */,
 				3878AAB51FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift */,
 				38226EE71FDB09AE00C10C8F /* ChallengesTableViewController.swift */,
 			);
@@ -269,6 +272,7 @@
 				3850AA1B1FD5C3F90057D125 /* Entry+CoreDataProperties.swift in Sources */,
 				3850AA1A1FD5C3F90057D125 /* Entry+CoreDataClass.swift in Sources */,
 				3850AA211FD5D5620057D125 /* AddEditEntryViewController.swift in Sources */,
+				3816E4371FE3309D00A41B01 /* ShiftableViewController.swift in Sources */,
 				389E019A1FD0C72E00F18ECE /* CloudKitManager.swift in Sources */,
 				3850AA131FD5BE6B0057D125 /* Noteworthy.xcdatamodeld in Sources */,
 				380E99371F9EEF1A0059E0C4 /* AppDelegate.swift in Sources */,

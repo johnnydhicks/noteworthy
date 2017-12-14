@@ -10,11 +10,13 @@ import UIKit
 import AVFoundation
 import CoreData
 
-class TimeLineTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class TimeLineTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
     var avPlayer: AVPlayer!
     var avPlayerLayer: AVPlayerLayer!
     var paused: Bool = false
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noEntryView: UIView!
     
     lazy var fetchedResultsController: NSFetchedResultsController<Entry> = {
         let context = CoreDataStack.context
@@ -28,7 +30,8 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.rowHeight = 400.0
         
         let sess = AVAudioSession.sharedInstance()
@@ -45,24 +48,39 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        guard let count = fetchedResultsController.fetchedObjects?.count else { return  }
+        if count > 0 {
+                noEntryView.isHidden = true
+        } else {
+            noEntryView.isHidden = false
+        }
+    }
+    
     // MARK: - Table view data source
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let sections = fetchedResultsController.sections, sections.count > section else { return 0 }
         return sections[section].numberOfObjects
     }
     
-    override func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? EntryTableViewCell else { return }
         cell.avPlayer?.pause()
     }
     
-    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? EntryTableViewCell else { return }
         cell.avPlayer?.play()
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let entries = fetchedResultsController.fetchedObjects else { return EntryTableViewCell() }
         let entry = entries[indexPath.row]
         
@@ -86,7 +104,7 @@ class TimeLineTableViewController: UITableViewController, NSFetchedResultsContro
     }
     
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
             let entry = fetchedResultsController.object(at: indexPath)
