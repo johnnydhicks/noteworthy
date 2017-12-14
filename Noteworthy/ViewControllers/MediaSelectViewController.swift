@@ -109,11 +109,14 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         
         let alertController = UIAlertController(title: "Select Media Location", message: nil, preferredStyle: .actionSheet)
         
+        
+        
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             
             
             alertController.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_) in
-                
+                NotificationCenter.default.post(name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil)
+
                 if PHPhotoLibrary.authorizationStatus() == .notDetermined ||
                     PHPhotoLibrary.authorizationStatus() == .denied {
                     PHPhotoLibrary.requestAuthorization({ (status) in
@@ -129,16 +132,29 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             }))
         }
         
+        
+        
         // Configuration for adding a photo from using the Camera
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
                 self.showImagePickerFor(sourceType: .camera)
+                NotificationCenter.default.post(name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil)
+
             }))
         }
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            NotificationCenter.default.post(name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil)
+        }
         
-        present(alertController, animated: true, completion: nil)
+        alertController.addAction(cancelAction)
+       
+        present(alertController, animated: true) {
+            if let gestureRecognizers = alertController.view.gestureRecognizers {
+                NotificationCenter.default.post(name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil, userInfo: ["recognizers": gestureRecognizers])
+            }
+        }
+//        present(alertController, animated: true, completion: nil)
     }
     
     func showImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
