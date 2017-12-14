@@ -51,12 +51,11 @@ class TimeLineTableViewController: UIViewController, UITableViewDataSource, UITa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let count = fetchedResultsController.fetchedObjects?.count else { return }
+        guard let count = fetchedResultsController.fetchedObjects?.count else { return  }
         if count > 0 {
-            
-            DispatchQueue.main.async {
-                self.noEntryView.removeFromSuperview()
-            }
+                noEntryView.isHidden = true
+        } else {
+            noEntryView.isHidden = false
         }
     }
     
