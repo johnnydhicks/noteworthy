@@ -40,12 +40,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         
         setupMoviePlayer()
-        if PHPhotoLibrary.authorizationStatus() == .notDetermined ||
-            PHPhotoLibrary.authorizationStatus() == .denied {
-            PHPhotoLibrary.requestAuthorization({ (status) in
-                self.authorizationStatus = status
-            })
-        }
         
         updateViews()
     }
@@ -117,14 +111,27 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             
+            
             alertController.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_) in
-                imagePicker.sourceType = .photoLibrary
-                imagePicker.allowsEditing = true
-                imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-                imagePicker.videoMaximumDuration = 30
-                DispatchQueue.main.async {
-                    self.present(imagePicker, animated: true, completion: nil)
+                
+                if PHPhotoLibrary.authorizationStatus() == .notDetermined ||
+                    PHPhotoLibrary.authorizationStatus() == .denied {
+                    PHPhotoLibrary.requestAuthorization({ (status) in
+                        self.authorizationStatus = status
+                        
+                        if self.authorizationStatus == .authorized {
+                            imagePicker.sourceType = .photoLibrary
+                            imagePicker.allowsEditing = true
+                            imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+                            imagePicker.videoMaximumDuration = 30
+                            DispatchQueue.main.async {
+                                self.present(imagePicker, animated: true, completion: nil)
+                            }
+                        }
+                    })
                 }
+                
+                
             }))
             
         }
