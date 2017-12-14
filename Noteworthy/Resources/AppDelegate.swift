@@ -24,6 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.bool(forKey: "challengesHaveBeenSetUp") == false {
             ChallengeController.shared.setupChallengeTypesAndChallenges()
         }
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.white], for: .normal)
+        
+        
         
         
         return true

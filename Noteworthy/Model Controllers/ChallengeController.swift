@@ -53,7 +53,7 @@ extension ChallengeController {
         let service = ChallengeType(name: "Service")
         
         // Outdoor
-        Challenge(name: "Cross a slackline 2x", challengeType: outdoor)
+        Challenge(name: "Cross a slackline 2", challengeType: outdoor)
         Challenge(name: "Ride a mountain bike on a dirt trail", challengeType: outdoor)
         Challenge(name: "Ride a road bike down a highway", challengeType: outdoor)
         Challenge(name: "Get up on a wakeboard/water skis", challengeType: outdoor)
