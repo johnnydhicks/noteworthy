@@ -63,6 +63,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         } else if let imageData = entry.imageData {
             
             imageView.image = UIImage(data: imageData as Data)
+            imageView.clipsToBounds = true
             selectMediaButton.setTitle("", for: [])
             selectMediaButton.backgroundColor = .clear
             videoPlayerItem = nil
@@ -89,6 +90,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         avPlayer?.actionAtItemEnd = .none
         avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: imageView.frame.width, height: imageView.frame.height)
         self.videoView.layer.insertSublayer(avPlayerLayer!, at: 0)
+        self.videoView.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.playerItemDidReachEnd(notification:)),
