@@ -10,45 +10,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534984774.816452"
+            timestampString = "534990794.263728"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Noteworthy.MediaSelectViewController.selectMediaButtonTapped(Any) -&gt; ()"
-                  moduleName = "Noteworthy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/johnnyhicks/Desktop/DevMountain/DevMountain%20Projects/Unit%206/Noteworthy/Noteworthy/ViewControllers/MediaSelectViewController.swift"
-                  timestampString = "534984967.437764"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "152"
-                  endingLineNumber = "152"
-                  offsetFromSymbolStart = "934">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #4 () -&gt; () in Noteworthy.MediaSelectViewController.selectMediaButtonTapped(Any) -&gt; ()"
-                  moduleName = "Noteworthy"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/johnnyhicks/Desktop/DevMountain/DevMountain%20Projects/Unit%206/Noteworthy/Noteworthy/ViewControllers/MediaSelectViewController.swift"
-                  timestampString = "534984967.440395"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "15">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534984774.816566"
+            timestampString = "534990794.263795"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "imagePickerController(_:didFinishPickingMediaWithInfo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/TimeLineTableViewController.swift"
-            timestampString = "534979283.441805"
+            timestampString = "534987983.735006"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
@@ -170,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534984774.816747"
+            timestampString = "534990794.263935"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
@@ -186,7 +154,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534984774.81682"
+            timestampString = "534990794.263985"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "34"
@@ -346,7 +314,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534984774.817173"
+            timestampString = "534990794.26415"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "112"
@@ -362,12 +330,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Noteworthy/ViewControllers/MediaSelectViewController.swift"
-            timestampString = "534984774.817238"
+            timestampString = "534990794.264197"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "153"
             endingLineNumber = "153"
             landmarkName = "selectMediaButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Noteworthy/ViewControllers/TimeLineTableViewController.swift"
+            timestampString = "534987983.735667"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
