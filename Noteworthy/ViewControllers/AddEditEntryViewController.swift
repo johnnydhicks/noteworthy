@@ -82,6 +82,7 @@ class AddEditEntryViewController: ShiftableViewController, PhotoSelectViewContro
         NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil)
     }
     
+    
     @objc func hideKeyboard(notification: Notification) {
         textViewBeingEdited?.resignFirstResponder()
         textFieldBeingEdited?.resignFirstResponder()

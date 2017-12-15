@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>For video entries, Noteworthy needs access to the microphone.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -19,11 +17,13 @@
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
-	<string>3</string>
+	<string>4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
 	<string>To create an entry using your camera, you must give Noteworthy access</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>For video entries, Noteworthy needs access to the microphone.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Noteworthy needs access to your photos before you can create an entry</string>
 	<key>UILaunchStoryboardName</key>
