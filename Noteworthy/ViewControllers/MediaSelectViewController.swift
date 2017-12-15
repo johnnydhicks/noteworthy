@@ -164,7 +164,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         
         imagePicker.sourceType = sourceType
         imagePicker.allowsEditing = true
-        imagePicker.cameraCaptureMode = .photo
         imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
         imagePicker.videoMaximumDuration = 30
         DispatchQueue.main.async {
