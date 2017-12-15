@@ -12,6 +12,8 @@ import CoreData
 
 class TimeLineTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, NSFetchedResultsControllerDelegate {
     
+    static let shared = TimeLineTableViewController()
+    
     var avPlayer: AVPlayer!
     var avPlayerLayer: AVPlayerLayer!
     var paused: Bool = false
@@ -58,6 +60,9 @@ class TimeLineTableViewController: UIViewController, UITableViewDataSource, UITa
             noEntryView.isHidden = false
         }
     }
+    
+    
+    
     
     // MARK: - Table view data source
     
