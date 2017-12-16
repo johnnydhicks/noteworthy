@@ -40,12 +40,6 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         super.viewDidLoad()
         
         setupMoviePlayer()
-        if PHPhotoLibrary.authorizationStatus() == .notDetermined ||
-            PHPhotoLibrary.authorizationStatus() == .denied {
-            PHPhotoLibrary.requestAuthorization({ (status) in
-                self.authorizationStatus = status
-            })
-        }
         
         updateViews()
     }
@@ -69,6 +63,7 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         } else if let imageData = entry.imageData {
             
             imageView.image = UIImage(data: imageData as Data)
+            imageView.clipsToBounds = true
             selectMediaButton.setTitle("", for: [])
             selectMediaButton.backgroundColor = .clear
             videoPlayerItem = nil
@@ -95,14 +90,18 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
         avPlayer?.actionAtItemEnd = .none
         avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: imageView.frame.width, height: imageView.frame.height)
         self.videoView.layer.insertSublayer(avPlayerLayer!, at: 0)
+        self.videoView.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.playerItemDidReachEnd(notification:)),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
                                                object: avPlayer?.currentItem)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.resumeVideo), name: NSNotification.Name(rawValue: "AppActive"), object: nil)
     }
     
-    
+    @objc func resumeVideo() {
+        self.avPlayer?.play()
+    }
     // A notification is fired and seeker is sent to the beginning to loop the video again
     @objc func playerItemDidReachEnd(notification: Notification) {
         let p: AVPlayerItem = notification.object as! AVPlayerItem
@@ -110,39 +109,69 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
     }
     
     @IBAction func selectMediaButtonTapped(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
         
         let alertController = UIAlertController(title: "Select Media Location", message: nil, preferredStyle: .actionSheet)
         
+        
+        
         if UIImagePickerController.isSourceTypeAvailable(.photoLibrary) {
             
+            
             alertController.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (_) in
-                imagePicker.sourceType = .photoLibrary
-                imagePicker.allowsEditing = true
-                imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
-                imagePicker.videoMaximumDuration = 30
-                DispatchQueue.main.async {
-                    self.present(imagePicker, animated: true, completion: nil)
+                NotificationCenter.default.post(name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil)
+
+                if PHPhotoLibrary.authorizationStatus() == .notDetermined ||
+                    PHPhotoLibrary.authorizationStatus() == .denied {
+                    PHPhotoLibrary.requestAuthorization({ (status) in
+                        self.authorizationStatus = status
+                        
+                        if self.authorizationStatus == .authorized {
+                            self.showImagePickerFor(sourceType: .photoLibrary)
+                        }
+                    })
+                } else if PHPhotoLibrary.authorizationStatus() == .authorized {
+                    self.showImagePickerFor(sourceType: .photoLibrary)
                 }
             }))
-            
         }
+        
+        
         
         // Configuration for adding a photo from using the Camera
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
             alertController.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (_) in
-                imagePicker.sourceType = .camera
-                imagePicker.cameraCaptureMode = .photo
-                imagePicker.modalPresentationStyle = .popover
-                imagePicker.allowsEditing = true
-                self.present(imagePicker, animated: true, completion: nil)
+                self.showImagePickerFor(sourceType: .camera)
+                NotificationCenter.default.post(name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil)
+
             }))
         }
         
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            NotificationCenter.default.post(name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil)
+        }
         
-        present(alertController, animated: true, completion: nil)
+        alertController.addAction(cancelAction)
+       
+        present(alertController, animated: true) {
+            if let gestureRecognizers = alertController.view.gestureRecognizers {
+                NotificationCenter.default.post(name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil, userInfo: ["recognizers": gestureRecognizers])
+            }
+        }
+//        present(alertController, animated: true, completion: nil)
+    }
+    
+    func showImagePickerFor(sourceType: UIImagePickerControllerSourceType) {
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        imagePicker.sourceType = sourceType
+        imagePicker.allowsEditing = true
+        imagePicker.mediaTypes = [kUTTypeImage as String, kUTTypeMovie as String]
+        imagePicker.videoMaximumDuration = 30
+        DispatchQueue.main.async {
+            self.present(imagePicker, animated: true, completion: nil)
+        }
     }
     
     @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
@@ -172,6 +201,10 @@ class MediaSelectViewController: UIViewController, UIImagePickerControllerDelega
             self.videoPlayerItem = AVPlayerItem(url: videoURL)
             picker.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 

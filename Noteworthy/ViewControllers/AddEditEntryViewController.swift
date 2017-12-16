@@ -8,7 +8,9 @@
 
 import UIKit
 
-class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDelegate, UITextViewDelegate {
+let imagePickerAlertControllerGesureRecognizerWasSetNotification = Notification.Name("imagePickerAlertControllerGesureRecognizerWasSet")
+
+class AddEditEntryViewController: ShiftableViewController, PhotoSelectViewControllerDelegate {
     
     // MARK: - Properties & Outlets
     var entry: Entry? 
@@ -16,7 +18,10 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     var movieURL: URL?
     var placeholderLabel: UILabel!
     
+    weak var imagePickerAlertControllerGesureRecognizer: UIGestureRecognizer?
+    
     @IBOutlet weak var noteTextView: UITextView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     // MARK: - ACTIONS
     @IBAction func cancelButtonTapped(_ sender: Any) {
@@ -60,8 +65,7 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationController?.navigationBar.barTintColor = UIColor.primaryAppBlue
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        noteTextView.delegate = self
     
         updateViews()
         
@@ -74,6 +78,14 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
         placeholderLabel.frame.origin = CGPoint(x: 5, y: (noteTextView.font?.pointSize)! / 2)
         placeholderLabel.textColor = UIColor.lightGray
         placeholderLabel.isHidden = !noteTextView.text.isEmpty
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard(notification:)), name: imagePickerAlertControllerGesureRecognizerWasSetNotification, object: nil)
+    }
+    
+    
+    @objc func hideKeyboard(notification: Notification) {
+        textViewBeingEdited?.resignFirstResponder()
+        textFieldBeingEdited?.resignFirstResponder()
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -83,6 +95,7 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
     private func updateViews() {
         guard let entry = entry else { return }
         noteTextView.text = entry.note
+        dateLabel.text = dateFormatter.string(from: entry.timestamp as Date)
         
         if let imageData = entry.imageData {
             image = UIImage(data: imageData as Data)
@@ -121,21 +134,13 @@ class AddEditEntryViewController: UIViewController, PhotoSelectViewControllerDel
             }
         }
     }
+
     
-    // MARK: - Keyboard Offset Functions
-    @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y == 0{
-                self.view.frame.origin.y -= keyboardSize.height
-            }
-        }
-    }
-    
-    @objc func keyboardWillHide(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            if self.view.frame.origin.y != 0{
-                self.view.frame.origin.y += keyboardSize.height
-            }
-        }
-    }
+    private var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .full
+        formatter.timeStyle = .short
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
 }

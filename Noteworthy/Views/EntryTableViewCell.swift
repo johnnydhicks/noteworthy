@@ -60,6 +60,12 @@ class EntryTableViewCell: UITableViewCell {
                                                selector: #selector(self.playerItemDidReachEnd(notification:)),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
                                                object: avPlayer?.currentItem)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.resumeVideo), name: NSNotification.Name(rawValue: "AppActive"), object: nil)
+    }
+    
+    @objc func resumeVideo() {
+        self.avPlayer?.play()
     }
     
     // A notification is fired and seeker is sent to the beginning to loop the video again
@@ -102,4 +108,7 @@ class EntryTableViewCell: UITableViewCell {
         return formatter
     }()
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }
