@@ -11,7 +11,7 @@ import CloudKit
 
 protocol CloudKitSyncable {
     
-    var cloudKitRecordID: CKRecordID? { get set }
+    var cloudKitRecordID: CKRecordID? { get }
 }
 
 extension CloudKitSyncable {

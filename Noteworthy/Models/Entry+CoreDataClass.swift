@@ -22,7 +22,7 @@ public class Entry: NSManagedObject, CloudKitSyncable {
     static let videoURLKey = "videoURL"
     
     // Pulling entries from Core Data
-    @discardableResult convenience init(imageData: Data?, videoURL: URL?, note: String, timestamp: Date = Date(), context: NSManagedObjectContext = CoreDataStack.context) {
+    @discardableResult convenience init(imageData: Data?, videoURL: URL?, note: String, timestamp: Date = Date(), recordID: String? = nil, context: NSManagedObjectContext = CoreDataStack.context) {
         
         self.init(context: context)
         
@@ -30,6 +30,7 @@ public class Entry: NSManagedObject, CloudKitSyncable {
         self.videoURL = videoURL?.absoluteString
         self.note = note
         self.timestamp = timestamp as NSDate
+        self.recordID = recordID
     }
     
     
@@ -64,8 +65,7 @@ public class Entry: NSManagedObject, CloudKitSyncable {
             }
         }
         
-        self.init(imageData: imageData, videoURL: videoURL, note: note, timestamp: timestamp, context: CoreDataStack.context)
-        self.cloudKitRecordID = record.recordID
+        self.init(imageData: imageData, videoURL: videoURL, note: note, timestamp: timestamp, recordID: record.recordID.recordName, context: CoreDataStack.context)
     }
     
     fileprivate var temporaryPhotoURL: URL {
@@ -83,14 +83,16 @@ public class Entry: NSManagedObject, CloudKitSyncable {
     
     
     var recordType: String { return Entry.typeKey }
-    var cloudKitRecordID: CKRecordID?
+    var cloudKitRecordID: CKRecordID? {
+        return CKRecordID(recordName: recordID ?? "")
+    }
 }
 
 
 
 extension CKRecord {
     convenience init(_ entry: Entry) {
-        let recordID = CKRecordID(recordName: UUID().uuidString)
+        let recordID = entry.cloudKitRecordID ?? CKRecordID(recordName: UUID().uuidString)
         self.init(recordType: Entry.typeKey, recordID: recordID)
         
         self[Entry.timestampKey] = entry.timestamp as CKRecordValue?
@@ -98,6 +100,7 @@ extension CKRecord {
         
         if entry.imageData != nil {
             self[Entry.imageDataKey] = CKAsset(fileURL: entry.temporaryPhotoURL)
+
         }
         
         guard let url = entry.videoURL?.createVideoURL() else { return }

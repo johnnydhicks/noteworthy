@@ -41,7 +41,7 @@ class EntryController {
                 
                 _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
                 saveToPersistentStore()
-                
+                performFullSync()
             } catch {
                 print(error.localizedDescription)
             }
@@ -76,16 +76,22 @@ class EntryController {
             entry.videoURL = nil
         }
         saveToPersistentStore()
-        performFullSync()
+
+        
+        let entryRecord = CKRecord(entry)
+        cloudKitManager.modifyRecords([entryRecord], perRecordCompletion: nil, completion: nil)
     }
     
     func delete(entry: Entry) {
         guard let moc = entry.managedObjectContext else { return }
         
         moc.delete(entry)
-        
+        guard let recordID = entry.cloudKitRecordID else { return }
         saveToPersistentStore()
-        performFullSync()
+        
+        cloudKitManager.deleteRecordWithID(recordID) { (success, error) in
+            
+        }
     }
     
     // Save Entries
@@ -126,7 +132,9 @@ class EntryController {
         
         pushChangesToCloudKit { (success, error) in
             
-            self.fetchNewRecordsOf(type: Entry.typeKey)
+            self.fetchNewRecordsOf(type: Entry.typeKey) {
+                self.saveToPersistentStore()
+            }
         
         }
         
@@ -178,7 +186,7 @@ class EntryController {
         let sortDescriptors: [NSSortDescriptor]?
         switch type {
         case Entry.typeKey:
-            let sortDescriptor = NSSortDescriptor(key: "creationDate", ascending: false)
+            let sortDescriptor = NSSortDescriptor(key: "timestamp", ascending: false)
             sortDescriptors = [sortDescriptor]
         default:
             sortDescriptors = nil
@@ -197,7 +205,6 @@ class EntryController {
             case Entry.typeKey:
                 let _ = records.flatMap { Entry(record: $0) }
 
-                self.saveToPersistentStore()
             default:
                 return
             }
@@ -209,9 +216,9 @@ class EntryController {
         
         let unsavedPosts = unsyncedRecordsOf(type: Entry.typeKey) as? [Entry] ?? []
         var unsavedObjectsByRecord = [CKRecord: CloudKitSyncable]()
-        for post in unsavedPosts {
-            let record = CKRecord(post)
-            unsavedObjectsByRecord[record] = post
+        for entry in unsavedPosts {
+            let record = CKRecord(entry)
+            unsavedObjectsByRecord[record] = entry
         }
         
         let unsavedRecords = Array(unsavedObjectsByRecord.keys)
@@ -219,12 +226,15 @@ class EntryController {
         cloudKitManager.saveRecords(unsavedRecords, perRecordCompletion: { (record, error) in
             
             guard let record = record else { return }
-            unsavedObjectsByRecord[record]?.cloudKitRecordID = record.recordID
             
-            self.saveToPersistentStore()
+            // Change this if you ever implement saving another class to CloudKit or it won't work.
+            guard let entry = unsavedObjectsByRecord[record] as? Entry else { return }
+                entry.recordID = record.recordID.recordName
+            
         }) { (records, error) in
             
             let success = records != nil
+            self.saveToPersistentStore()
             completion(success, error)
         }
     }
