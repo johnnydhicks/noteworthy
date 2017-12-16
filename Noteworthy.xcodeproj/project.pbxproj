@@ -17,6 +17,7 @@
 		38226EE41FDAF87E00C10C8F /* ChallengeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE31FDAF87E00C10C8F /* ChallengeController.swift */; };
 		38226EE81FDB09AE00C10C8F /* ChallengesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE71FDB09AE00C10C8F /* ChallengesTableViewController.swift */; };
 		38226EEA1FDB16CF00C10C8F /* ChallengeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38226EE91FDB16CF00C10C8F /* ChallengeTableViewCell.swift */; };
+		38381EA71FE57DAE0039DE9B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38381EA61FE57DAE0039DE9B /* ViewController.swift */; };
 		3850AA101FD5B95E0057D125 /* CloudKitSyncable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */; };
 		3850AA131FD5BE6B0057D125 /* Noteworthy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA111FD5BE6B0057D125 /* Noteworthy.xcdatamodeld */; };
 		3850AA151FD5C0DA0057D125 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3850AA141FD5C0DA0057D125 /* CoreDataStack.swift */; };
@@ -47,6 +48,7 @@
 		38226EE31FDAF87E00C10C8F /* ChallengeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeController.swift; sourceTree = "<group>"; };
 		38226EE71FDB09AE00C10C8F /* ChallengesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengesTableViewController.swift; sourceTree = "<group>"; };
 		38226EE91FDB16CF00C10C8F /* ChallengeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChallengeTableViewCell.swift; sourceTree = "<group>"; };
+		38381EA61FE57DAE0039DE9B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3850AA0F1FD5B95E0057D125 /* CloudKitSyncable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKitSyncable.swift; sourceTree = "<group>"; };
 		3850AA121FD5BE6B0057D125 /* Noteworthy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Noteworthy.xcdatamodel; sourceTree = "<group>"; };
 		3850AA141FD5C0DA0057D125 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				3850AA261FD5FF5F0057D125 /* MediaSelectViewController.swift */,
 				3878AAB51FD9EEBA00C18C56 /* ChallengeCategoryViewController.swift */,
 				38226EE71FDB09AE00C10C8F /* ChallengesTableViewController.swift */,
+				38381EA61FE57DAE0039DE9B /* ViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -275,6 +278,7 @@
 				3878AAB41FD9DF2C00C18C56 /* EntryWithPhotoTableViewCell.swift in Sources */,
 				3850AA231FD5D6EC0057D125 /* EntryTableViewCell.swift in Sources */,
 				38226EE81FDB09AE00C10C8F /* ChallengesTableViewController.swift in Sources */,
+				38381EA71FE57DAE0039DE9B /* ViewController.swift in Sources */,
 				3850AA1F1FD5D5270057D125 /* TimeLineTableViewController.swift in Sources */,
 				3850AA151FD5C0DA0057D125 /* CoreDataStack.swift in Sources */,
 				3850AA101FD5B95E0057D125 /* CloudKitSyncable.swift in Sources */,
