@@ -28,8 +28,10 @@ class ChallengesTableViewController: UITableViewController, ChallengeTableViewCe
         navigationController?.setNavigationBarHidden(false, animated: false)
         navigationItem.title = challengeType?.name
         
-        navigationItem.rightBarButtonItem?.isEnabled = true
-    
+        
+        if challengeType?.name != "BucketList" {
+        navigationItem.rightBarButtonItem?.isEnabled = false
+        }
     }
     
     @IBAction func addChallengeButtonTapped(_ sender: Any) {

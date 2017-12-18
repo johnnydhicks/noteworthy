@@ -69,7 +69,7 @@ extension ChallengeController {
         let fitness = ChallengeType(name: "Fitness")
         let travel = ChallengeType(name: "Travel")
         let survival = ChallengeType(name: "Survival")
-        let food = ChallengeType(name: "Food")
+
         let service = ChallengeType(name: "Service")
         let _ = ChallengeType(name: "BucketList")
         
@@ -145,17 +145,6 @@ extension ChallengeController {
         Challenge(name: "Carve somethings out of wood", challengeType: survival)
         Challenge(name: "Go tree tipping", challengeType: survival)
         Challenge(name: "Cut your own wood for a campfire", challengeType: survival)
-        
-        // Food
-        Challenge(name: "Eat the first thing on the menu at a local Mexican Restaurant", challengeType: food)
-        Challenge(name: "Make yourself a candlelit dinner ", challengeType: food)
-        Challenge(name: "Try something from the produce section of the grocery store that you've never tried before", challengeType: food)
-        Challenge(name: "Complete a challenge at a restaurant that will get your picture on the wall", challengeType: food)
-        Challenge(name: "Make your own grape juice by grape stomping and drink it", challengeType: food)
-        Challenge(name: "Eat at a random roadside diner that you've never been to", challengeType: food)
-        Challenge(name: "Make a smoothie using at least 5 fruits and vegetables", challengeType: food)
-        Challenge(name: "Eat something from a food truck", challengeType: food)
-        Challenge(name: "Go to a restaurant serving a type of food that you've never tried", challengeType: food)
         
         
         

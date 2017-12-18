@@ -183,12 +183,12 @@
                                                             <constraint firstAttribute="height" constant="100" id="5qC-06-nWU"/>
                                                             <constraint firstAttribute="width" constant="100" id="lMU-RC-LEm"/>
                                                         </constraints>
-                                                        <state key="normal" backgroundImage="FoodButton"/>
+                                                        <state key="normal" backgroundImage="BucketList"/>
                                                         <connections>
-                                                            <segue destination="Kw0-4B-Cgf" kind="show" identifier="toFoodChallenges" id="2SQ-1q-rQQ"/>
+                                                            <segue destination="Kw0-4B-Cgf" kind="show" identifier="toMyBucketlist" id="2SQ-1q-rQQ"/>
                                                         </connections>
                                                     </button>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Food" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxV-iy-Jxf">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Bucketlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxV-iy-Jxf">
                                                         <rect key="frame" x="0.0" y="103" width="100" height="16.333333333333329"/>
                                                         <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="13"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -224,16 +224,6 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HJj-iR-no0">
-                                <rect key="frame" x="239" y="134" width="92" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="My Bucketlist">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <connections>
-                                    <segue destination="Kw0-4B-Cgf" kind="show" identifier="toMyBucketlist" id="iSQ-iD-LuP"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -688,12 +678,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="BucketList" width="122" height="122"/>
         <image name="CampingButton" width="122" height="122"/>
         <image name="ChallengesIconDeselected" width="25" height="24"/>
         <image name="ChallengesIconSelected" width="25" height="24"/>
         <image name="CommunityButton" width="122" height="122"/>
         <image name="FitnessButton" width="122" height="122"/>
-        <image name="FoodButton" width="122" height="122"/>
         <image name="HomeButton" width="25" height="24"/>
         <image name="HomeButtonUnselected" width="25" height="24"/>
         <image name="LaunchScreenImage" width="1280" height="720"/>
@@ -2231,6 +2221,6 @@ ywABY84AAWPTAAAAAAAABAEAAAAAAAAAWQAAAAAAAAAAAAAAAAABY9U
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fMu-5u-JMv"/>
-        <segue reference="iSQ-iD-LuP"/>
+        <segue reference="2SQ-1q-rQQ"/>
     </inferredMetricsTieBreakers>
 </document>
