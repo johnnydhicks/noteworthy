@@ -84,7 +84,8 @@ public class Entry: NSManagedObject, CloudKitSyncable {
     
     var recordType: String { return Entry.typeKey }
     var cloudKitRecordID: CKRecordID? {
-        return CKRecordID(recordName: recordID ?? "")
+        guard let recordID = recordID else { return nil }
+        return CKRecordID(recordName: recordID)
     }
 }
 
@@ -100,11 +101,12 @@ extension CKRecord {
         
         if entry.imageData != nil {
             self[Entry.imageDataKey] = CKAsset(fileURL: entry.temporaryPhotoURL)
-
+            self[Entry.videoURLKey] = nil
         }
         
         guard let url = entry.videoURL?.createVideoURL() else { return }
         self[Entry.videoURLKey] = CKAsset(fileURL: url)
+        self[Entry.imageDataKey] = nil
     }
 }
 

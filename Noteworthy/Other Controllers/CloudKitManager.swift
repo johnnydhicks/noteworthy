@@ -93,7 +93,7 @@ class CloudKitManager {
     
     func fetchRecord(withID recordID: CKRecordID, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.fetch(withRecordID: recordID) { (record, error) in
+        privateDatabase.fetch(withRecordID: recordID) { (record, error) in
             
             completion?(record, error)
         }
@@ -128,7 +128,7 @@ class CloudKitManager {
                 continuedQueryOperation.recordFetchedBlock = perRecordBlock
                 continuedQueryOperation.queryCompletionBlock = queryCompletionBlock
                 
-                self.publicDatabase.add(continuedQueryOperation)
+                self.privateDatabase.add(continuedQueryOperation)
                 
             } else {
                 completion?(fetchedRecords, error)
@@ -136,7 +136,7 @@ class CloudKitManager {
         }
         queryOperation.queryCompletionBlock = queryCompletionBlock
         
-        self.publicDatabase.add(queryOperation)
+        self.privateDatabase.add(queryOperation)
     }
     
     func fetchCurrentUserRecords(_ type: String, completion: ((_ records: [CKRecord]?, _ error: Error?) -> Void)?) {
@@ -170,7 +170,7 @@ class CloudKitManager {
     
     func deleteRecordWithID(_ recordID: CKRecordID, completion: ((_ recordID: CKRecordID?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.delete(withRecordID: recordID) { (recordID, error) in
+        privateDatabase.delete(withRecordID: recordID) { (recordID, error) in
             completion?(recordID, error)
         }
     }
@@ -182,7 +182,7 @@ class CloudKitManager {
         
         operation.modifyRecordsCompletionBlock = completion
         
-        publicDatabase.add(operation)
+        privateDatabase.add(operation)
     }
     
     
@@ -195,7 +195,7 @@ class CloudKitManager {
     
     func saveRecord(_ record: CKRecord, completion: ((_ record: CKRecord?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.save(record, completionHandler: { (record, error) in
+        privateDatabase.save(record, completionHandler: { (record, error) in
             
             completion?(record, error)
         })
@@ -214,7 +214,7 @@ class CloudKitManager {
             (completion?(records, error))
         }
         
-        publicDatabase.add(operation)
+        privateDatabase.add(operation)
     }
     
     
@@ -238,7 +238,7 @@ class CloudKitManager {
         
         subscription.notificationInfo = notificationInfo
         
-        publicDatabase.save(subscription, completionHandler: { (subscription, error) in
+        privateDatabase.save(subscription, completionHandler: { (subscription, error) in
             
             completion?(subscription, error)
         })
@@ -246,7 +246,7 @@ class CloudKitManager {
     
     func unsubscribe(_ subscriptionID: String, completion: ((_ subscriptionID: String?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.delete(withSubscriptionID: subscriptionID) { (subscriptionID, error) in
+        privateDatabase.delete(withSubscriptionID: subscriptionID) { (subscriptionID, error) in
             
             completion?(subscriptionID, error)
         }
@@ -254,7 +254,7 @@ class CloudKitManager {
     
     func fetchSubscriptions(_ completion: ((_ subscriptions: [CKSubscription]?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.fetchAllSubscriptions { (subscriptions, error) in
+        privateDatabase.fetchAllSubscriptions { (subscriptions, error) in
             
             completion?(subscriptions, error)
         }
@@ -262,7 +262,7 @@ class CloudKitManager {
     
     func fetchSubscription(_ subscriptionID: String, completion: ((_ subscription: CKSubscription?, _ error: Error?) -> Void)?) {
         
-        publicDatabase.fetch(withSubscriptionID: subscriptionID) { (subscription, error) in
+        privateDatabase.fetch(withSubscriptionID: subscriptionID) { (subscription, error) in
             
             completion?(subscription, error)
         }

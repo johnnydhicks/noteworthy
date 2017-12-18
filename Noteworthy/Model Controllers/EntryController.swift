@@ -134,6 +134,7 @@ class EntryController {
             
             self.fetchNewRecordsOf(type: Entry.typeKey) {
                 self.saveToPersistentStore()
+                completion()
             }
         
         }
@@ -203,6 +204,8 @@ class EntryController {
             
             switch type {
             case Entry.typeKey:
+                
+                
                 let _ = records.flatMap { Entry(record: $0) }
 
             default:

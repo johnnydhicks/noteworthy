@@ -44,6 +44,7 @@ class TimeLineTableViewController: UIViewController, UITableViewDataSource, UITa
         
         do {
             try fetchedResultsController.performFetch()
+    
         } catch let error as NSError {
             NSLog("Error performing fetch on NSFetchedResultsController: \(error)")
         }
@@ -52,6 +53,10 @@ class TimeLineTableViewController: UIViewController, UITableViewDataSource, UITa
         EntryController.shared.performFullSync() {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                
+                if EntryController.shared.entries.count > 0 {
+                self.noEntryView.isHidden = true
+                }
             }
         }
     }
