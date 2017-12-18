@@ -77,16 +77,24 @@ class ChallengesTableViewController: UITableViewController, ChallengeTableViewCe
     
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
-        if challengeType?.name == "Bucketlist" {
+        if challengeType?.name == "BucketList" {
                 return .delete
         } else {
             return .none
         }
     }
     
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-//        
-//    }
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            guard let challenge = challengeType?.challenges?.object(at: indexPath.row) as? Challenge else { return }
+            
+            ChallengeController.shared.removeFromBucketlist(challenge: challenge)
+            
+            
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "challengeCell", for: indexPath) as? ChallengeTableViewCell else { return UITableViewCell() }
