@@ -21,10 +21,10 @@ class ChallengeCategoryViewController: UIViewController {
     }
     
     // MARK: - Navigation
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "toOutdoorChallenges" {
-    
+            
             guard let challengeType = ChallengeController.shared.challengeTypes.filter({$0.name == "Outdoor"}).first,
                 let challengeVC = segue.destination as? ChallengesTableViewController else { return }
             
@@ -61,6 +61,13 @@ class ChallengeCategoryViewController: UIViewController {
         } else if segue.identifier == "toServiceChallenges" {
             
             guard let challengeType = ChallengeController.shared.challengeTypes.filter({$0.name == "Service"}).first,
+                let challengeVC = segue.destination as? ChallengesTableViewController else { return }
+            
+            challengeVC.challengeType = challengeType
+            
+        } else if segue.identifier == "toMyBucketlist" {
+            
+            guard let challengeType = ChallengeController.shared.challengeTypes.filter({$0.name == "BucketList"}).first,
                 let challengeVC = segue.destination as? ChallengesTableViewController else { return }
             
             challengeVC.challengeType = challengeType

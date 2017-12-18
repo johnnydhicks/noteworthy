@@ -31,6 +31,26 @@ class ChallengeController: NSObject, NSFetchedResultsControllerDelegate {
         saveToPersistentStorage()
     }
     
+    func addToBucketlist(itemName name: String) {
+        
+        guard let challengeType = challengeTypes.filter( { $0.name == "BucketList" }).first else { return }
+        _ = Challenge(name: name, challengeType: challengeType, context: CoreDataStack.context)
+        
+        saveToPersistentStorage()
+    }
+    
+    func updateBucketlist(challenge: Challenge, name: String) {
+        challenge.name = name
+        
+        saveToPersistentStorage()
+    }
+    
+    func removeFromBucketlist(challenge: Challenge) {
+        challenge.managedObjectContext?.delete(challenge)
+        
+        saveToPersistentStorage()
+    }
+    
     
     func saveToPersistentStorage() {
         do {
@@ -51,6 +71,7 @@ extension ChallengeController {
         let survival = ChallengeType(name: "Survival")
         let food = ChallengeType(name: "Food")
         let service = ChallengeType(name: "Service")
+        let _ = ChallengeType(name: "BucketList")
         
         // Outdoor
         Challenge(name: "Cross a slackline 2", challengeType: outdoor)
