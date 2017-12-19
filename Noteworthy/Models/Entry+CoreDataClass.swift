@@ -38,7 +38,7 @@ public class Entry: NSManagedObject, CloudKitSyncable {
     
     convenience init?(record: CKRecord) {
         
-        guard let timestamp = record.creationDate,
+        guard let timestamp = record[Entry.timestampKey] as? Date,
             let note = record[Entry.noteKey] as? String else { return nil }
         
         
