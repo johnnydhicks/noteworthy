@@ -18,6 +18,11 @@ class EntryTableViewCell: UITableViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        entry = nil
+    }
+    
     @IBOutlet weak var videoPlayerSuperView: UIView!
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var dateLabel: UILabel!
@@ -26,25 +31,16 @@ class EntryTableViewCell: UITableViewCell {
     var avPlayer: AVPlayer?
     var avPlayerLayer: AVPlayerLayer?
     var paused: Bool = false
-
-    
     var videoPlayerItem: AVPlayerItem? = nil {
         didSet {
             avPlayer?.replaceCurrentItem(with: self.videoPlayerItem)
             avPlayer?.play()
-            flipImage(image: photoImageView.image ?? UIImage())
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    override func prepareForReuse() {
-        photoImageView.image = nil
-        videoPlayerItem = nil
-    }
-
     
     func setupMoviePlayer() {
         guard self.avPlayer == nil else { return }
@@ -56,37 +52,30 @@ class EntryTableViewCell: UITableViewCell {
         avPlayer?.isMuted = true
         avPlayerLayer?.frame = CGRect(x: 0, y: 0, width: photoImageView.frame.width, height: photoImageView.frame.height)
         
-        avPlayerLayer?.backgroundColor = UIColor.lightGray.cgColor
         self.backgroundColor = .clear
         self.videoPlayerSuperView.layer.insertSublayer(avPlayerLayer!, at: 0)
+        self.videoPlayerSuperView.clipsToBounds = true
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(self.playerItemDidReachEnd(notification:)),
                                                name: NSNotification.Name.AVPlayerItemDidPlayToEndTime,
                                                object: avPlayer?.currentItem)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.resumeVideo), name: NSNotification.Name(rawValue: "AppActive"), object: nil)
+    }
+    
+    @objc func resumeVideo() {
+        self.avPlayer?.play()
     }
     
     // A notification is fired and seeker is sent to the beginning to loop the video again
     @objc func playerItemDidReachEnd(notification: Notification) {
         let p: AVPlayerItem = notification.object as! AVPlayerItem
-        p.seek(to: kCMTimeZero)
+        p.seek(to: kCMTimeZero, completionHandler: nil)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-    
-    
-   @discardableResult func flipImage(image: UIImage) -> UIImage {
-        guard let cgImage = image.cgImage else {
-            // Could not form CGImage from UIImage for some reason.
-            // Return unflipped image
-            return image
-        }
-        let flippedImage = UIImage(cgImage: cgImage,
-                                   scale: image.scale,
-                                   orientation: .leftMirrored)
-        return flippedImage
     }
     
     func updateCell() {
@@ -95,12 +84,7 @@ class EntryTableViewCell: UITableViewCell {
         dateLabel.text = dateFormatter.string(from: entry.timestamp as Date)
         noteLabel.text = entry.note
         
-        
-        if let imageData = entry.imageData {
-        photoImageView.image = UIImage(data: imageData as Data)
-        photoImageView.contentMode = UIViewContentMode.scaleAspectFit
-            
-        } else if let videoURLString = entry.videoURL,
+        if let videoURLString = entry.videoURL,
             let videoURL = URL(string: videoURLString) {
             setupMoviePlayer()
             let finalVideoURL = createVideoURL(url: videoURL)!
@@ -109,7 +93,6 @@ class EntryTableViewCell: UITableViewCell {
             let fm = FileManager.default
             let exist = fm.fileExists(atPath: finalVideoURL.path)
             print("-----> \(exist)")
-            photoImageView.image = nil
         }
     }
     
@@ -134,4 +117,7 @@ class EntryTableViewCell: UITableViewCell {
         return formatter
     }()
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

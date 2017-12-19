@@ -15,17 +15,15 @@ class EntryController {
     // Shared Instance
     static let shared = EntryController()
     
+    var fetchedResultsController: NSFetchedResultsController<Entry>!
     
-    // Source of all truth
-    var entriesOriginal: [Entry] {
+    var entries: [Entry] {
         
         let request: NSFetchRequest<Entry> = Entry.fetchRequest()
         
-        return (try? CoreDataStack.context.fetch(request)) ?? []
-    }
-    
-    var entries: [Entry] {
-        return entriesOriginal.reversed()
+        let results = (try? CoreDataStack.context.fetch(request)) ?? []
+        
+        return results.sorted(by: { $0.timestamp.timeIntervalSince1970 > $1.timestamp.timeIntervalSince1970 })
     }
     
     // CRUD Functions
@@ -43,26 +41,39 @@ class EntryController {
                 
                 _ = Entry(imageData: imageData, videoURL: URL(string:oldVideoURL.lastPathComponent), note: note)
                 saveToPersistentStore()
-
+                
             } catch {
                 print(error.localizedDescription)
             }
-            
-            
         } else {
             _ = Entry(imageData: imageData, videoURL: nil, note: note)
             saveToPersistentStore()
-
         }
-        
-        
     }
     
-    func update(entry: Entry, imageData: Data?, OldVideoURL: URL?, note: String) {
+    func update(entry: Entry, imageData: Data?, oldVideoURL: URL?, note: String) {
         
-//        entry.note = note
-//        entry.imageData = imageData as NSData
-//        entry.videoURL = OldVideoURL
+        entry.note = note
+        
+        if let oldVideoURL = oldVideoURL {
+            
+            if let videoData = try? Data(contentsOf: oldVideoURL) {
+                do {
+                    let directoryURL = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+                    let newVideoURL = directoryURL.appendingPathComponent(oldVideoURL.lastPathComponent)
+                    try videoData.write(to: newVideoURL)
+                    entry.videoURL = oldVideoURL.lastPathComponent
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+            
+            entry.imageData = nil
+            
+        } else if let imageData = imageData {
+            entry.imageData = imageData as NSData
+            entry.videoURL = nil
+        }
         saveToPersistentStore()
     }
     
@@ -73,7 +84,6 @@ class EntryController {
         
         saveToPersistentStore()
     }
-    
     
     // Save Entries
     func saveToPersistentStore() {
