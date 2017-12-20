@@ -21,9 +21,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let urlCache = URLCache(memoryCapacity: 25000000, diskCapacity: 50000000, diskPath: temporaryDirectory)
         URLCache.shared = urlCache
         
+        if UserDefaults.standard.bool(forKey: "bucketlistHasBeenSetUp") == false {
+            ChallengeController.shared.setupBucketList()
+        }
+        
         if UserDefaults.standard.bool(forKey: "challengesHaveBeenSetUp") == false {
             ChallengeController.shared.setupChallengeTypesAndChallenges()
         }
+        
+        
+        // Fix typos
+        ChallengeController.shared.fixTypos(challengeTypeName: "Outdoor", challengeName: "Cross a slackline 2", fixedChallengeName: "Cross a slackline")
+        
+        ChallengeController.shared.fixTypos(challengeTypeName: "Fitness", challengeName: "Participare in Ragnar", fixedChallengeName: "Participate in Ragnar")
+        
+        ChallengeController.shared.fixTypos(challengeTypeName: "Service", challengeName: "Clean our your closet and take your unneeded clothes to the local charity", fixedChallengeName: "Clean out your closet and take your unneeded clothes to the local charity")
         
         return true
     }

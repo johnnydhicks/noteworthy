@@ -63,18 +63,34 @@ class ChallengeController: NSObject, NSFetchedResultsControllerDelegate {
 
 
 extension ChallengeController {
+    
+    func setupBucketList() {
+        let _ = ChallengeType(name: "BucketList")
+        
+        saveToPersistentStorage()
+        UserDefaults.standard.set(true, forKey: "bucketlistHasBeenSetUp")
+    }
+    
+    func fixTypos(challengeTypeName: String, challengeName: String, fixedChallengeName: String) {
+        if let challengetype = ChallengeController.shared.challengeTypes.filter({ $0.name == challengeTypeName}).first {
+            if let challenge = challengetype.challenges?.filter({ ($0 as? Challenge)?.name == challengeName }).first as? Challenge {
+                challenge.name = fixedChallengeName
+                saveToPersistentStorage()
+            }
+        }
+    }
 
     func setupChallengeTypesAndChallenges() {
         let outdoor = ChallengeType(name: "Outdoor")
         let fitness = ChallengeType(name: "Fitness")
         let travel = ChallengeType(name: "Travel")
         let survival = ChallengeType(name: "Survival")
-
-        let service = ChallengeType(name: "Service")
         let _ = ChallengeType(name: "BucketList")
+        let service = ChallengeType(name: "Service")
+        
         
         // Outdoor
-        Challenge(name: "Cross a slackline 2", challengeType: outdoor)
+        Challenge(name: "Cross a slackline", challengeType: outdoor)
         Challenge(name: "Ride a mountain bike on a dirt trail", challengeType: outdoor)
         Challenge(name: "Ride a road bike down a highway", challengeType: outdoor)
         Challenge(name: "Get up on a wakeboard/water skis", challengeType: outdoor)
@@ -162,7 +178,7 @@ extension ChallengeController {
         Challenge(name: "Hit a bullseye with a bow and arrow at an archery range", challengeType: fitness)
         Challenge(name: "Swim a mile", challengeType: fitness)
         Challenge(name: "Bowl a score over 170", challengeType: fitness)
-        Challenge(name: "Participare in Ragnar", challengeType: fitness)
+        Challenge(name: "Participate in Ragnar", challengeType: fitness)
         Challenge(name: "Run a 5K/10K that is for a good cause", challengeType: fitness)
         
         

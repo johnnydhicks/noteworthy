@@ -26,8 +26,11 @@ class ChallengesTableViewController: UITableViewController, ChallengeTableViewCe
         super.viewDidLoad()
         
         navigationController?.setNavigationBarHidden(false, animated: false)
+        if challengeType?.name != "BucketList" {
         navigationItem.title = challengeType?.name
-        
+        } else {
+            navigationItem.title = "My Bucketlist"
+        }
         
         if challengeType?.name != "BucketList" {
         navigationItem.rightBarButtonItem?.isEnabled = false
