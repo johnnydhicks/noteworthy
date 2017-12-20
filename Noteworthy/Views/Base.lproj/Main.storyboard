@@ -276,13 +276,13 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="291.33333333333331" height="47.666666666666664"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LqT-AR-d3M">
-                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="11.333333333333334"/>
-                                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="13"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="0.0" height="11.666666666666666"/>
+                                                            <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="itG-kP-bNv">
-                                                            <rect key="frame" x="0.0" y="11.333333333333332" width="291.33333333333331" height="36.333333333333343"/>
+                                                            <rect key="frame" x="0.0" y="11.666666666666664" width="291.33333333333331" height="36"/>
                                                             <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="11"/>
                                                             <color key="textColor" red="0.21267658472061157" green="0.43864524364471436" blue="0.73339170217514038" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
